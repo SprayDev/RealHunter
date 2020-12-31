@@ -1,0 +1,169 @@
+body{
+    background: #ffffff;
+}
+a.active{
+    color: #FA961E !important;
+}
+.hunter-nav{
+    /*padding-left: 240px;*/
+    /*padding-right: 240px;*/
+    background-color: rgba(0,0,0,0) !important;
+    color: black;
+    height: 80px;
+}
+.hunter-brand{
+    color: black !important;
+    font-weight: bolder !important;
+}
+.hunter-welcome{
+    height: 100vh;
+    background-image: url('../images/hunter_dog.png');
+    /*background-attachment: fixed;*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.hunter-start-hunt{
+    height: 100vh;
+    background-image: url('../images/forest.png');
+    /*background-attachment: fixed;*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.hunter-container-header{
+    max-width: 847px;
+}
+.hunter-navbar-nav li a{
+    color: black;
+    font-weight: 400;
+}
+.hunter-phone{
+    margin-left: 15px;
+}
+.hunter-phone a{
+    color: black;
+}
+.hunter-display-head{
+    font-size: 48px;
+}
+.hunter-display-btn{
+    background-color: #fa961e;
+}
+.hunter-card-text{
+    background-color: #D0E5CC;
+}
+.hunter-card-footer{
+    position: absolute;
+    bottom: 0;
+    padding: 1.75rem 1.25rem;
+}
+.hunter-card-text a {
+    color: #267317;
+}
+.hunter-tours-h2{
+    font-weight: 600;
+}
+.hunter-tours-h2 span{
+    color: #FA961E !important;
+}
+.hunter-text-orange{
+    color: #FA961E !important;
+}
+a.hunter-text-orange{
+    text-decoration: none;
+}
+.hunter-card-title{
+    font-size: 16px;
+    height: 46px;
+}
+.hunter-card-title span{
+    color: #267317;
+}
+.hunter-card-body{
+    padding: 1.25rem 0 1.25rem 0;
+}
+.cutCorner-1, .cutCorner-2 {
+    position:relative; background-color:blue;
+    border:1px solid silver; display: inline-block;
+}
+.hunter-border-orange {
+    border: 1px solid #fa961e !important;
+}
+.hunter-check-tour-btn{
+    border-radius: 4.8px;
+    color: #fa961e;
+}
+
+.cutCorner-1, .cutCorner-2 img {
+    display:block;
+}
+
+.cutCorner-2:before {
+    position:absolute; bottom:-2px; left:-2px; content:'';
+    border-bottom: 34px solid white;
+    border-right: 96px solid transparent;
+    border-radius: 1px;
+    border-top-right-radius: 15px;
+}
+.cutCorner-1:before {
+    position:absolute; bottom:-2px; left:-2px; content:'';
+    border-bottom: 34px solid white;
+    border-right: 50px solid transparent;
+    border-radius: 1px;
+    border-top-right-radius: 15px;
+}
+.hunter-images{
+    position:absolute; bottom: 5px; left:0px;
+}
+.hunter-start-hunt-btn{
+    border-radius: 4.8px;
+    color: #000000;
+    background-color: #ffffff;
+}
+.hunter-start-hunt-btn:hover{
+    background-color: #FA961E;
+    color: white !important;
+}
+.hunter-policy{
+    text-decoration: underline;
+    color: black;
+}
+.hunter-policy:hover{
+    color: black;
+}
+.hunter-footer a {
+    color: black;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+.hunter-perm-lg-item:hover h3{
+    color: #FA961E !important;
+}
+.hunter-perm-title span {
+    color: #267317;
+}
+.hunter-text-green{
+    color: #267317;
+}
+@media screen and (max-width: 1200px) {
+    .hunter-container-header{
+        max-width: 770px;
+    }
+}
+@media screen and (max-width: 991px) {
+    .hunter-card-text{
+        height: 270px;
+    }
+}
+@media screen and (max-width: 968px) {
+    .hunter-container-header{
+        max-width: 615px;
+    }
+}
+@media screen and (max-width: 968px) {
+    .hunter-container-header{
+        max-width: 515px;
+    }
+}

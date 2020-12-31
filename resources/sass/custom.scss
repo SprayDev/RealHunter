@@ -1,0 +1,173 @@
+body{
+    background: #ffffff;
+}
+a.active{
+    color: $hunter_orange !important;
+}
+.hunter-nav{
+    /*padding-left: 240px;*/
+    /*padding-right: 240px;*/
+    background-color: rgba(0,0,0,0) !important;
+    color: black;
+    .navbar-toggler-icon{
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+}
+.hunter-brand{
+    color: black !important;
+    font-weight: bolder !important;
+}
+.hunter-welcome{
+    height: 100vh;
+    background-image: url('../images/hunter_dog.png');
+    /*background-attachment: fixed;*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.hunter-start-hunt{
+    height: 100vh;
+    background-image: url('../images/forest.png');
+    /*background-attachment: fixed;*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.hunter-container-header{
+    max-width: 847px;
+}
+.hunter-navbar-nav{
+    li a{
+        color: black;
+        font-weight: 400;
+    }
+}
+.hunter-phone{
+    margin-left: 15px;
+}
+.hunter-phone a{
+    color: black;
+}
+.hunter-display-head{
+    font-size: 48px;
+}
+.hunter-display-btn{
+    background-color: $hunter_orange;
+}
+.hunter-card-text{
+    background-color: #D0E5CC;
+}
+.hunter-card-footer{
+    position: absolute;
+    bottom: 0;
+    padding: 1.75rem 1.25rem;
+}
+.hunter-card-text a {
+    color: $hunter_green;
+}
+.hunter-tours-h2{
+    font-weight: 600;
+}
+.hunter-tours-h2 span{
+    color: $hunter_orange !important;
+}
+.hunter-text-orange{
+    color: $hunter_orange !important;
+}
+a.hunter-text-orange{
+    text-decoration: none;
+}
+.hunter-card-title{
+    font-size: 16px;
+    height: 46px;
+}
+.hunter-card-title span{
+    color: $hunter_green;
+}
+.hunter-card-body{
+    padding: 1.25rem 0 1.25rem 0;
+}
+.cutCorner-1, .cutCorner-2 {
+    position:relative; background-color:blue;
+    border:1px solid silver; display: inline-block;
+}
+.hunter-border-orange {
+    border: 1px solid $hunter_orange !important;
+}
+.hunter-check-tour-btn{
+    border-radius: 4.8px;
+    color: $hunter_orange;
+}
+
+.cutCorner-1, .cutCorner-2 img {
+    display:block;
+}
+
+.cutCorner-2:before {
+    position:absolute; bottom:-2px; left:-2px; content:'';
+    border-bottom: 34px solid white;
+    border-right: 96px solid transparent;
+    border-radius: 1px;
+    border-top-right-radius: 15px;
+}
+.cutCorner-1:before {
+    position:absolute; bottom:-2px; left:-2px; content:'';
+    border-bottom: 34px solid white;
+    border-right: 50px solid transparent;
+    border-radius: 1px;
+    border-top-right-radius: 15px;
+}
+.hunter-images{
+    position:absolute; bottom: 5px; left:0px;
+}
+.hunter-start-hunt-btn{
+    border-radius: 4.8px;
+    color: #000000;
+    background-color: #ffffff;
+}
+.hunter-start-hunt-btn:hover{
+    background-color: $hunter_orange;
+    color: white !important;
+}
+.hunter-policy{
+    text-decoration: underline;
+    color: black;
+}
+.hunter-policy:hover{
+    color: black;
+}
+.hunter-footer a {
+    color: black;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+.hunter-perm-lg-item:hover h3{
+    color: $hunter_orange !important;
+}
+.hunter-perm-title span {
+    color: $hunter_green;
+}
+.hunter-text-green{
+    color: $hunter_green;
+}
+@media screen and (max-width: 1200px) {
+    .hunter-container-header{
+        max-width: 770px;
+    }
+}
+@media screen and (max-width: 991px) {
+    .hunter-card-text{
+        height: 270px;
+    }
+}
+@media screen and (max-width: 968px) {
+    .hunter-container-header{
+        max-width: 615px;
+    }
+}
+@media screen and (max-width: 968px) {
+    .hunter-container-header{
+        max-width: 515px;
+    }
+}
