@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row py-4 mx-0">
                 <div class="col-12 col-md mr-5 pl-0">
-                    <a class="navbar-brand hunter-brand px-0" href="/">RealHunting</a>
+                    <a class="navbar-brand hunter-brand px-0" href="/"><img src="/images/logotype.svg"></a>
                 </div>
                 <div :class="`col-6 col-md ${!isMobile() ? 'ml-5' : ''}`" >
                     <a class="nav-link px-0" href="#">О Компании</a>

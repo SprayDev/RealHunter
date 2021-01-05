@@ -15,7 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [indexController::class, 'index']);
+Route::get('/company', [indexController::class, 'company']);
+Route::get('/contacts', [indexController::class, 'contacts']);
 Route::prefix('/permissions')->group(function(){
     Route::get('/', [indexController::class, 'permissions']);
     Route::get('/{slug}', [indexController::class, 'permission']);
+});
+Route::prefix('/tours')->group(function(){
+    Route::get('/', [indexController::class, 'tours']);
+    Route::get('/{slug}', [indexController::class, 'tour']);
+});
+Route::prefix('/blog')->group(function(){
+    Route::get('/', [indexController::class, 'blog']);
+    Route::get('/test', function (){
+        return view('pages.test');
+    });
+    Route::get('/{slug}', [indexController::class, 'post']);
 });

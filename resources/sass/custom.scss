@@ -151,6 +151,49 @@ a.hunter-text-orange{
 .hunter-text-green{
     color: $hunter_green;
 }
+.card-tour {
+    span {
+        text-decoration-line: underline;
+    }
+}
+.hunter-desc-block{
+    p {
+        span {
+            font-weight: bolder;
+        }
+    }
+}
+.hunter-list-adv{
+    li {
+        padding: 5px 0 5px 0;
+    }
+}
+.hunter-blog-card:hover{
+    cursor: pointer;
+    .hunter-card-title{
+        color: $hunter_orange;
+    }
+}
+.custom-range::-webkit-slider-thumb {
+    background: $hunter_orange;
+}
+
+.custom-range::-moz-range-thumb {
+    background: $hunter_orange;
+}
+
+.custom-range::-ms-thumb {
+    background: $hunter_orange;
+}
+.hunter-btn-orange {
+    color: #fff;
+    background-color: $hunter_orange !important;
+    border-color: $hunter_orange !important;
+    &:hover{
+        color: $hunter_orange;
+        background-color: #fff !important;
+    }
+}
 @media screen and (max-width: 1200px) {
     .hunter-container-header{
         max-width: 770px;

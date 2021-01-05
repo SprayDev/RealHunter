@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg bg-light hunter-nav">
         <!--hunter-container-header-->
         <div class="container">
-            <a class="navbar-brand hunter-brand" href="/">RealHunting</a>
+            <a class="navbar-brand hunter-brand" href="/"><img src="/images/logotype.svg"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -12,7 +12,7 @@
                         <a class="nav-link" href="/permissions">Разрешения</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/test1">Туры</a>
+                        <a class="nav-link" href="/tours">Туры</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/blog">Блог</a>
@@ -40,8 +40,9 @@ export default {
     mounted() {
         let navbar = document.getElementById('navbarNav');
         let links = Array.from(navbar.querySelectorAll('.nav-link'));
+        let regexp = new RegExp(this.url+'?', 'g')
         links.map((item, index) => {
-            if (item.href == this.url)
+            if ((item.href == this.url || this.url.includes(item.href)) && item.getAttribute('href') != '#')
             {
                 item.classList.add('active')
             }

@@ -22,6 +22,16 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('hunter-footer', require('./components/partials/footer.vue').default);
 Vue.component('hunter-header', require('./components/partials/header.vue').default);
+Vue.component('hunter-slider', require('./components/partials/slider.vue').default);
+Vue.component('hunter-text-block', require('./components/partials/textBlock.vue').default);
+Vue.component('hunter-perm-modal', require('./components/partials/hunter-perm-modal.vue').default);
+Vue.component('hunter-tour-modal', require('./components/partials/hunter-tour-modal.vue').default);
+Vue.component('hunter-page-tour', require('./components/pages/tour.vue').default);
+Vue.component('hunter-page-blog', require('./components/pages/blog.vue').default);
+Vue.component('hunter-page-post', require('./components/pages/post.vue').default);
+
+import VueSplide from '@splidejs/vue-splide';
+Vue.use( VueSplide );
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

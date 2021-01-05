@@ -18,6 +18,7 @@
                         <p class="card-text font-weight-bold hunter-text-green">от 120 000 руб</p>
                     </div>
                 </div>
+                <a class="btn ml-auto hunter-start-hunt-btn hunter-border-orange hunter-text-orange w-100" href="#" data-toggle="modal" data-target="#permModal">Получить разрешение</a>
             </div>
         </div>
         <h1 class="font-weight-bold">Туры</h1>
@@ -64,4 +65,5 @@
             <div class="w-75 border mb-3"></div>
         </div>
     </div>
+    <hunter-perm-modal></hunter-perm-modal>
 @endsection
