@@ -29,6 +29,7 @@ Vue.component('hunter-tour-modal', require('./components/partials/hunter-tour-mo
 Vue.component('hunter-page-tour', require('./components/pages/tour.vue').default);
 Vue.component('hunter-page-blog', require('./components/pages/blog.vue').default);
 Vue.component('hunter-page-post', require('./components/pages/post.vue').default);
+Vue.component('hunter-perms-post', require('./components/pages/licenses.vue').default);
 
 import VueSplide from '@splidejs/vue-splide';
 Vue.use( VueSplide );

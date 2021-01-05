@@ -10160,6 +10160,10 @@ a.hunter-text-orange {
   color: #BC702A !important;
 }
 
+.hunter-perm-sm-item:hover h4 {
+  color: #BC702A !important;
+}
+
 .hunter-perm-title span {
   color: #267317;
 }
@@ -10208,6 +10212,10 @@ a.hunter-text-orange {
 .hunter-btn-orange:hover {
   color: #BC702A;
   background-color: #fff !important;
+}
+
+.frame_container iframe {
+  width: 100% !important;
 }
 
 @media screen and (max-width: 1200px) {

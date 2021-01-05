@@ -3,23 +3,16 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title font-weight-bolder" id="exampleModalLabel">Разрешение на охоту: <span class="hunter-text-green">Бурый медведь</span></h5>
+                    <h5 class="modal-title font-weight-bolder" id="exampleModalLabel">Разрешение на охоту: <span class="hunter-text-green">{{license.title}}</span></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div>
-                        <p class="font-weight-bolder">Осенняя охота на камчатского <span class="hunter-text-green">бурого медведя </span>в 2021 году</p>
-                    </div>
                     <div class="form-row">
-                        <div class="form-check form-check-inline col">
-                            <input class="form-check-input" type="checkbox" id="season1" @change="seasonChange($event)" value="test" v-model="season">
-                            <label class="form-check-label" for="season1">01.03.21-21.06.21</label>
-                        </div>
-                        <div class="form-check form-check-inline col">
-                            <input class="form-check-input" type="checkbox" id="season2" value="test">
-                            <label class="form-check-label" for="season2">01.08.21-31.10.21</label>
+                        <div class="form-check form-check-inline col" v-for="(item, index) in license.seasons">
+                            <input class="form-check-input" type="checkbox" :id="`season${index}`" v-model="season">
+                            <label class="form-check-label" :for="`season${index}`">{{item.date_from}}-{{ item.date_to }}</label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -52,8 +45,9 @@
 <script>
 export default {
     name: "hunter-perm-modal",
+    props: ['license'],
     mounted() {
-        $("#exampleModal").modal()
+
     },
     data(){
         return {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\blog;
+use App\Models\licensies;
 use App\Models\Tour;
 use App\Models\TourPictures;
 use Illuminate\Http\Request;
@@ -16,12 +17,24 @@ class indexController extends Controller
 
     public function permissions()
     {
-        return view('pages.permissions');
+        $perms = licensies::with('picture')->get();
+
+        return view('pages.permissions')->withPerms($perms);
     }
 
-    public function permission()
+    public function permission($id)
     {
-        return view('pages.permission');
+        $perm = licensies::whereId($id)->with('location')->with('seasons')->first();
+
+        foreach ($perm->seasons as $k=>$season)
+        {
+            $season->date_from = date('d.m.Y', strtotime($perm->seasons[0]->date_from));
+            $season->date_to = date('d.m.Y', strtotime($perm->seasons[0]->date_to));
+            $perm->seasons[$k] = $season;
+        }
+        $tours = Tour::with('location')->orderBy('available_period_min')->limit(4)->get();
+
+        return view('pages.permission')->withPerm($perm)->withTours($tours);
     }
 
     public function tours()

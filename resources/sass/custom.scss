@@ -145,6 +145,9 @@ a.hunter-text-orange{
 .hunter-perm-lg-item:hover h3{
     color: $hunter_orange !important;
 }
+.hunter-perm-sm-item:hover h4{
+    color: $hunter_orange !important;
+}
 .hunter-perm-title span {
     color: $hunter_green;
 }
@@ -192,6 +195,11 @@ a.hunter-text-orange{
     &:hover{
         color: $hunter_orange;
         background-color: #fff !important;
+    }
+}
+.frame_container{
+    iframe{
+        width: 100% !important;
     }
 }
 @media screen and (max-width: 1200px) {
