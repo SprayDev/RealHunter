@@ -38,4 +38,9 @@ class Tour extends Model
         }
         return $images;
     }
+
+    public function facilities()
+    {
+        return $this->hasMany(facilities::class);
+    }
 }

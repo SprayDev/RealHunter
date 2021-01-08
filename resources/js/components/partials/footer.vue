@@ -6,19 +6,19 @@
                     <a class="navbar-brand hunter-brand px-0" href="/"><img src="/images/logotype.svg"></a>
                 </div>
                 <div :class="`col-6 col-md ${!isMobile() ? 'ml-5' : ''}`" >
-                    <a class="nav-link px-0" href="#">О Компании</a>
+                    <a class="nav-link px-0" href="/company">О Компании</a>
                 </div>
                 <div class="col-6 col-md">
-                    <a class="nav-link px-0" href="#">Контакты</a>
+                    <a class="nav-link px-0" href="/contacts">Контакты</a>
                 </div>
                 <div class="col-6 col-md">
-                    <a class="nav-link px-0" href="#">Блог</a>
+                    <a class="nav-link px-0" href="/blog">Блог</a>
                 </div>
                 <div class="col-6 col-md">
-                    <a class="nav-link px-0" href="#">Каталог туров</a>
+                    <a class="nav-link px-0" href="/tours">Каталог туров</a>
                 </div>
                 <div class="col-6 col-md">
-                    <a class="nav-link px-0" href="#">Разрешения</a>
+                    <a class="nav-link px-0" href="/permissions">Разрешения</a>
                 </div>
                 <div class="hunter-phone">
                     <a class="nav-link hunter-text-orange font-weight-bold" href="#">+7 912 350 50 50</a>

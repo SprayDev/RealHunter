@@ -25,13 +25,13 @@ class indexController extends Controller
     public function permission($id)
     {
         $perm = licensies::whereId($id)->with('location')->with('seasons')->first();
-
         foreach ($perm->seasons as $k=>$season)
         {
-            $season->date_from = date('d.m.Y', strtotime($perm->seasons[0]->date_from));
-            $season->date_to = date('d.m.Y', strtotime($perm->seasons[0]->date_to));
+            $season->date_from = date('d.m.Y', strtotime($season->date_from));
+            $season->date_to = date('d.m.Y', strtotime($season->date_to));
             $perm->seasons[$k] = $season;
         }
+
         $tours = Tour::with('location')->orderBy('available_period_min')->limit(4)->get();
 
         return view('pages.permission')->withPerm($perm)->withTours($tours);
@@ -46,21 +46,20 @@ class indexController extends Controller
 
     public function tour($slug)
     {
-        $tour = Tour::whereId($slug)->with('location')->first();
+        $tour = Tour::whereId($slug)->with('facilities')->with('location')->first();
         $tour->pics = $tour->images();
         $origin = date_create($tour->available_period_min);
         $target = date_create($tour->available_period_max);
         $interval = date_diff($origin, $target);
-        $tours = Tour::with('location')->orderBy('available_period_min')->limit(3)->get();
-        foreach ($tours as $k=>$tour)
+        $tours = Tour::with('location')->with('facilities')->orderBy('available_period_min')->limit(3)->get();
+        foreach ($tours as $k=>$item)
         {
-            $origin = date_create($tour->available_period_min);
-            $target = date_create($tour->available_period_max);
+            $origin = date_create($item->available_period_min);
+            $target = date_create($item->available_period_max);
             $int = date_diff($origin, $target);
-            $tour->days_av = $int->format('%a дней');
-            $tours[$k] = $tour;
+            $item->days_av = $int->format('%a дней');
+            $tours[$k] = $item;
         }
-
         return view('pages.tour')->withTour($tour)->withDays($interval->format('%a дней'))->withTours($tours);
     }
 

@@ -26,6 +26,7 @@ Vue.component('hunter-slider', require('./components/partials/slider.vue').defau
 Vue.component('hunter-text-block', require('./components/partials/textBlock.vue').default);
 Vue.component('hunter-perm-modal', require('./components/partials/hunter-perm-modal.vue').default);
 Vue.component('hunter-tour-modal', require('./components/partials/hunter-tour-modal.vue').default);
+Vue.component('hunter-fb-modal', require('./components/partials/hunter-fb-modal.vue').default);
 Vue.component('hunter-page-tour', require('./components/pages/tour.vue').default);
 Vue.component('hunter-page-blog', require('./components/pages/blog.vue').default);
 Vue.component('hunter-page-post', require('./components/pages/post.vue').default);

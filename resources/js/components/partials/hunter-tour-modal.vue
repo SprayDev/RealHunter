@@ -12,51 +12,53 @@
                     <div>
                         <p class="font-weight-bolder">Осенняя охота на камчатского <span class="hunter-text-green">бурого медведя </span>в 2021 году</p>
                     </div>
-                    <div class="form-group w-50">
-                        <label for="exampleInputEmail1">Дата заезда</label>
-                        <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    </div>
-                    <div class="row pb-3">
-                        <div class="col">
-                            <p class="card-text">Количество <span style="text-decoration-line: underline" title="Гость — это сопровождающий без права охоты">Охотников</span>  {{hunters}}</p>
+                    <form ref="form">
+                        <div class="form-group w-50">
+                            <label for="exampleInputEmail1">Дата заезда</label>
+                            <input type="date" name="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         </div>
-                        <div class="d-flex col">
-                            <span>1</span>
-                            <input v-model="hunters" type="range" class="custom-range" min="1" value="1" max="10" step="1">
-                            <span>10</span>
+                        <div class="row pb-3">
+                            <div class="col">
+                                <p class="card-text">Количество <span style="text-decoration-line: underline" title="Гость — это сопровождающий без права охоты">Охотников</span>  {{huntersCount}}</p>
+                            </div>
+                            <div class="d-flex col">
+                                <span>{{tour.number_of_hunters_min}}</span>
+                                <input name="hunters" v-model="huntersCount" type="range" class="custom-range" :min="tour.number_of_hunters_min" value="1" :max="tour.number_of_hunters_max" step="1">
+                                <span>{{tour.number_of_hunters_max}}</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row pb-3">
-                        <div class="col">
-                            <p class="card-text">Количество <span style="text-decoration-line: underline" title="Гость — это сопровождающий без права охоты">Гостей</span>  {{guests}}</p>
+                        <div class="row pb-3">
+                            <div class="col">
+                                <p class="card-text">Количество <span style="text-decoration-line: underline" title="Гость — это сопровождающий без права охоты">Гостей</span>  {{guestsCount}}</p>
+                            </div>
+                            <div class="d-flex col">
+                                <span>{{tour.number_of_guests_min}}</span>
+                                <input type="range" name="guests" v-model="guestsCount" class="custom-range" value="0" :min="tour.number_of_guests_min" :max="tour.number_of_guests_max" step="1">
+                                <span>{{tour.number_of_guests_max}}</span>
+                            </div>
                         </div>
-                        <div class="d-flex col">
-                            <span>0</span>
-                            <input type="range" v-model="guests" class="custom-range" value="0" min="0" max="10" step="1">
-                            <span>10</span>
+                        <div class="form-group">
+                            <label>Как к вам обращаться <span class="text-muted">не обязательно</span></label>
+                            <input name="name" placeholder="Имя" v-model="name" type="text" class="form-control">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Как к вам обращаться <span class="text-muted">не обязательно</span></label>
-                        <input placeholder="Имя" v-model="name" type="text" class="form-control">
-                    </div>
-                    <div class="form-row pb-3">
-                        <div class="col">
-                            <label>Куда звонить</label>
-                            <input v-model="phone" placeholder="Номер телефона" type="text" class="form-control" required>
+                        <div class="form-row pb-3">
+                            <div class="col">
+                                <label>Куда звонить</label>
+                                <input v-model="phone" name="phone" placeholder="Номер телефона" type="text" class="form-control" required>
+                            </div>
+                            <div class="col">
+                                <label>Куда писать</label>
+                                <input  v-model="email" name="email" placeholder="Электронная почта" type="text" class="form-control" required>
+                            </div>
                         </div>
-                        <div class="col">
-                            <label>Куда писать</label>
-                            <input  v-model="email" placeholder="Электронная почта" type="text" class="form-control" required>
+                        <div class="form-group">
+                            <label>Комментарий <span class="text-muted">не обязательно</span></label>
+                            <textarea class="form-control" rows="3" name="note" v-model="note"></textarea>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Комментарий <span class="text-muted">не обязательно</span></label>
-                        <textarea class="form-control" rows="3" v-model="note"></textarea>
-                    </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn hunter-btn-orange">Отправить заявку</button>
+                    <button type="button" class="btn hunter-btn-orange" @click="sendMail" data-toggle="modal" data-target="#tourModal">Отправить заявку</button>
                 </div>
             </div>
         </div>
@@ -66,8 +68,21 @@
 <script>
 export default {
     name: "hunter-tour-modal",
+    props: [
+        'tour',
+        'inhunters',
+        'inguests'
+    ],
+    computed: {
+        huntersCount(){
+            return this.inhunters;
+        },
+        guestsCount(){
+            return this.inguests
+        }
+    },
     mounted() {
-        $("#exampleModal").modal()
+        this.hunters = this.huntersCount
     },
     data(){
         return {
@@ -83,6 +98,28 @@ export default {
         changeTip(event){
             let target = event.target;
             target.title = target.value
+        },
+        sendMail(){
+            var formElement = this.$refs.form;
+            let data = new FormData(formElement)
+            let vm = this;
+            axios.post('/api/sendMail', data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).catch((error) => {
+                let errors = error.response.data.errors
+                if (errors)
+                {
+                    for (let index in errors)
+                    {
+                        let input_validate = formElement.querySelector(`input[name="${index}"]`).closest('div').querySelector('div[class="invalid-feedback"]')
+                        input_validate.style.display = 'block';
+                        vm.validateForm[index] = errors[index][0]
+                    }
+                }
+            }).then((response) => {
+            })
         }
     }
 }

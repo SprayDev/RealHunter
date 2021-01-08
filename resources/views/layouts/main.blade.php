@@ -20,7 +20,7 @@
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ducimus eius eos excepturi fugit laborum nemo placeat quam quidem ratione, saepe similique voluptatem voluptatibus. Dolores fugit possimus qui temporibus veniam.</p>
                         </div>
                         <div class="hunter-card-footer">
-                            <a href="#">Посмотреть все разрешения</a>
+                            <a href="/permissions">Посмотреть все разрешения</a>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -33,7 +33,7 @@
         <div class="container">
             <h2 class="hunter-tours-h2 pb-3"><span>Туры</span> охотные. Крутые</h2>
             <p class="w-75 text-justify pb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, ad aliquam asperiores debitis eum excepturi explicabo harum iste labore modi perspiciatis placeat praesentium quaerat quam ratione reiciendis sint totam vel.</p>
-            <a class="hunter-text-orange mb-3" href="#">Посмотреть все туры</a>
+            <a class="hunter-text-orange mb-3" href="/tours">Посмотреть все туры</a>
             <div class="card-deck">
                 <div class="card border-0">
                     <div class="cutCorner-2">
@@ -89,7 +89,7 @@
             <div class="col-md-8 mt-5 pr-0 pl-0 d-flex justify-content-center">
                 <div class="w-50 text-center mt-5">
                     <h2 class="text-white font-weight-bolder text-center pb-5">Найди себя настоящего на настоящей охоте</h2>
-                    <a class="btn hunter-start-hunt-btn" href="#">Посмотреть туры</a>
+                    <a class="btn hunter-start-hunt-btn" href="/tours">Посмотреть туры</a>
                 </div>
             </div>
         </div>

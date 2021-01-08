@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [indexController::class, 'index']);
-Route::get('/company', [indexController::class, 'company']);
-Route::get('/contacts', [indexController::class, 'contacts']);
+//Route::get('/company', [indexController::class, 'company']);
+//Route::get('/contacts', [indexController::class, 'contacts']);
 Route::prefix('/permissions')->group(function(){
     Route::get('/', [indexController::class, 'permissions']);
     Route::get('/{slug}', [indexController::class, 'permission']);
@@ -32,3 +32,4 @@ Route::prefix('/blog')->group(function(){
     });
     Route::get('/{slug}', [indexController::class, 'post']);
 });
+Route::get('/{page}', \App\Http\Controllers\staticController::class)->where('page', 'company|contacts');

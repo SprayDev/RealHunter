@@ -10218,6 +10218,15 @@ a.hunter-text-orange {
   width: 100% !important;
 }
 
+.hunter-page-item.active a.page-link {
+  background-color: #BC702A !important;
+  border-color: #BC702A !important;
+  color: white !important;
+}
+.hunter-page-item a.page-link {
+  color: #BC702A !important;
+}
+
 @media screen and (max-width: 1200px) {
   .hunter-container-header {
     max-width: 770px;

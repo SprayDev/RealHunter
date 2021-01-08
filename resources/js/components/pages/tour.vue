@@ -265,7 +265,7 @@
                 </div>
             </div>
         </div>
-        <hunter-tour-modal></hunter-tour-modal>
+        <hunter-tour-modal :tour="tour" :inhunters="count_hunters" :inguests="count_guests"></hunter-tour-modal>
     </div>
 </template>
 
@@ -280,6 +280,12 @@
             }
         },
         computed: {
+            count_hunters() {
+                return this.huntersCount
+            },
+            count_guests() {
+                return this.guestsCount
+            },
             mainPic() {
                 let pics = this.tour.pics;
                 return pics.filter((item => item.type == 'main'))[0]

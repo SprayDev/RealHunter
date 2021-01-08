@@ -15,7 +15,7 @@
             <div class="col py-4">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                        <li :class="`page-item ${blog.active ? 'active' : ''}`" v-for="(blog, index) in blogs.links" :key="index">
+                        <li :class="`page-item hunter-page-item ${blog.active ? 'active' : ''}`" v-for="(blog, index) in blogs.links" :key="index">
                             <a class="page-link" :href="blog.url ? blog.url : '#'">{{blog.label}} </a>
                         </li>
                     </ul>
