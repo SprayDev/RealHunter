@@ -18,14 +18,14 @@
                             </div>
                         </div>
                         <div class="form-row pb-3">
-                            <div class="col">
+                            <div class="form-group col-lg-6 col-xs-12">
                                 <label>Куда звонить</label>
                                 <input v-model="phone" placeholder="Номер телефона" type="text" class="form-control" name="phone">
                                 <div class="invalid-feedback">
                                     {{validateForm.phone}}
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="form-group col-lg-6 col-xs-12">
                                 <label>Куда писать</label>
                                 <input  v-model="email" placeholder="Электронная почта" type="text" class="form-control" name="email">
                                 <div class="invalid-feedback">
@@ -89,6 +89,7 @@ export default {
                     }
                 }
             }).then((response) => {
+                $(this.$refs.modal).modal()
             })
         }
     }

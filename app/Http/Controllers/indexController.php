@@ -46,7 +46,7 @@ class indexController extends Controller
 
     public function tour($slug)
     {
-        $tour = Tour::whereId($slug)->with('facilities')->with('location')->first();
+        $tour = Tour::whereId($slug)->with('facilities')->with('prices')->with('location')->first();
         $tour->pics = $tour->images();
         $origin = date_create($tour->available_period_min);
         $target = date_create($tour->available_period_max);

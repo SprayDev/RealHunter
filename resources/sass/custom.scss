@@ -1,3 +1,18 @@
+@font-face {
+    font-family: HunterFont;
+    src: url("/fonts/HunterFont/georgia.ttf");
+}
+h2.hunter-display-head{
+    font-family: Georgia;
+}
+h1{
+    font-family: Georgia;
+    font-weight: 700 !important;
+    font-size: 2.25rem !important;
+}
+p{
+    font-size: 1rem !important;
+}
 body{
     background: #ffffff;
 }
@@ -18,6 +33,9 @@ a.active{
     font-weight: bolder !important;
 }
 .hunter-welcome{
+    .hunter-nav{
+        background-color: #f8f9fa !important;
+    }
     height: 100vh;
     background-image: url('../images/hunter_dog.png');
     /*background-attachment: fixed;*/
@@ -32,6 +50,10 @@ a.active{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    h3{
+        font-size: 3rem;
+        font-family: Georgia;
+    }
 }
 .hunter-container-header{
     max-width: 847px;
@@ -41,12 +63,15 @@ a.active{
         color: black;
         font-weight: 400;
     }
+    li a:hover{
+        color: $hunter_orange;
+    }
 }
 .hunter-phone{
     margin-left: 15px;
 }
 .hunter-phone a{
-    color: black;
+    color: $hunter_green;
 }
 .hunter-display-head{
     font-size: 48px;
@@ -58,6 +83,9 @@ a.active{
     background-color: #D0E5CC;
 }
 .hunter-card-footer{
+    @media screen and (max-width: 1024px){
+        position: inherit;
+    }
     position: absolute;
     bottom: 0;
     padding: 1.75rem 1.25rem;
@@ -67,6 +95,7 @@ a.active{
 }
 .hunter-tours-h2{
     font-weight: 600;
+    font-family: Georgia;
 }
 .hunter-tours-h2 span{
     color: $hunter_orange !important;
@@ -78,8 +107,9 @@ a.hunter-text-orange{
     text-decoration: none;
 }
 .hunter-card-title{
-    font-size: 16px;
-    height: 46px;
+    font-size: 20px;
+    //height: 46px;
+    font-weight: 600;
 }
 .hunter-card-title span{
     color: $hunter_green;
@@ -88,8 +118,9 @@ a.hunter-text-orange{
     padding: 1.25rem 0 1.25rem 0;
 }
 .cutCorner-1, .cutCorner-2 {
-    position:relative; background-color:blue;
-    border:1px solid silver; display: inline-block;
+    position:relative;
+    background-color:blue;
+    display: inline-block;
 }
 .hunter-border-orange {
     border: 1px solid $hunter_orange !important;
@@ -103,22 +134,56 @@ a.hunter-text-orange{
     display:block;
 }
 
-.cutCorner-2:before {
-    position:absolute; bottom:-2px; left:-2px; content:'';
-    border-bottom: 34px solid white;
-    border-right: 96px solid transparent;
-    border-radius: 1px;
-    border-top-right-radius: 15px;
-}
-.cutCorner-1:before {
-    position:absolute; bottom:-2px; left:-2px; content:'';
-    border-bottom: 34px solid white;
-    border-right: 50px solid transparent;
-    border-radius: 1px;
-    border-top-right-radius: 15px;
-}
+//.cutCorner-2::before {
+//    position:absolute; bottom:-2px; left:-2px; content:'';
+//    border-bottom: 34px solid white;
+//    border-right: 96px solid transparent;
+//    border-radius: 1px 15px 1px 1px;
+//    -webkit-border-radius: 1px 15px 1px 1px;
+//    -moz-border-radius: 1px 15px 1px 1px;
+//}
+//.cutCorner-1 {
+//    position:absolute; bottom:-2px; left:-2px; content:'';
+//    border-bottom: 34px solid white;
+//    border-right: 50px solid transparent;
+//    border-radius: 1px 15px 1px 1px;
+//    -webkit-border-radius: 1px 15px 1px 1px;
+//    -moz-border-radius: 1px 15px 1px 1px;;
+//}
+//.cutCorner-1{
+//    clip-path: $hunter-clip_path_1;
+//    z-index: 0;
+//    &:after{
+//        content: '';
+//        background-color: white;
+//        position:absolute;
+//        bottom:-2px; left:-2px;
+//        content:'';
+//        border-bottom: 34px solid white;
+//        border-right: 96px solid transparent;
+//        border-radius: 1px 15px 1px 1px;
+//        -webkit-border-radius: 1px 15px 1px 1px;
+//        -moz-border-radius: 1px 15px 1px 1px;
+//    }
+//}
+//.corner{
+//    position:absolute; bottom:-2px; left:-2px; content:'';
+//    border-bottom: 34px solid white;
+//    border-right: 50px solid transparent;
+//    border-radius: 1px 15px 1px 1px;
+//    -webkit-border-radius: 1px 15px 1px 1px;
+//    -moz-border-radius: 1px 15px 1px 1px;;
+//}
 .hunter-images{
-    position:absolute; bottom: 5px; left:0px;
+    & img{
+        padding: 5px 5px 5px 0;
+    }
+    position:absolute;
+    bottom: 0px;
+    background-color: white;
+    border-top-right-radius: 15px;
+    -webkit-border-top-right-radius: 15px;
+    left:0px;
 }
 .hunter-start-hunt-btn{
     border-radius: 4.8px;
@@ -138,12 +203,19 @@ a.hunter-text-orange{
 }
 .hunter-footer a {
     color: black;
+    padding-left: 0;
+    padding-right: 0;
 }
 .cursor-pointer{
     cursor: pointer;
 }
 .hunter-perm-lg-item:hover h3{
     color: $hunter_orange !important;
+}
+.hunter-perm-sm-item{
+    h4{
+        font-size: 1.25rem;
+    }
 }
 .hunter-perm-sm-item:hover h4{
     color: $hunter_orange !important;
@@ -221,7 +293,19 @@ a.hunter-text-orange{
 }
 @media screen and (max-width: 991px) {
     .hunter-card-text{
-        height: 270px;
+        //height: 270px;
+    }
+    .hunter-phone a{
+        color: white;
+    }
+    .hunter-navbar-nav{
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+}
+@media screen and (min-width: 992px){
+    .hunter-nav{
+        height: 80px;
     }
 }
 @media screen and (max-width: 968px) {
@@ -232,5 +316,13 @@ a.hunter-text-orange{
 @media screen and (max-width: 968px) {
     .hunter-container-header{
         max-width: 515px;
+    }
+}
+@media screen and (max-width: 576px){
+    .h-w-100{
+        width: 100% !important;
+    }
+    .hunter-jc-start{
+        justify-content: start !important;
     }
 }

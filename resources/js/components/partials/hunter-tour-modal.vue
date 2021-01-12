@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade" id="tourModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="tourModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" ref="modal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -13,42 +13,51 @@
                         <p class="font-weight-bolder">Осенняя охота на камчатского <span class="hunter-text-green">бурого медведя </span>в 2021 году</p>
                     </div>
                     <form ref="form">
-                        <div class="form-group w-50">
+                        <div class="form-group w-100">
                             <label for="exampleInputEmail1">Дата заезда</label>
                             <input type="date" name="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         </div>
                         <div class="row pb-3">
-                            <div class="col">
+                            <div class="form-group col-sm-12 col-lg-6">
                                 <p class="card-text">Количество <span style="text-decoration-line: underline" title="Гость — это сопровождающий без права охоты">Охотников</span>  {{huntersCount}}</p>
                             </div>
-                            <div class="d-flex col">
+                            <div class="d-flex form-group col-sm-12 col-lg-6">
                                 <span>{{tour.number_of_hunters_min}}</span>
-                                <input name="hunters" v-model="huntersCount" type="range" class="custom-range" :min="tour.number_of_hunters_min" value="1" :max="tour.number_of_hunters_max" step="1">
+                                <input name="hunters" v-model="hunters" @change="changeRange($event,'hunters')" type="range" class="custom-range" :min="tour.number_of_hunters_min" value="1" :max="tour.number_of_hunters_max" step="1">
                                 <span>{{tour.number_of_hunters_max}}</span>
                             </div>
                         </div>
                         <div class="row pb-3">
-                            <div class="col">
+                            <div class="form-group col-sm-12 col-lg-6">
                                 <p class="card-text">Количество <span style="text-decoration-line: underline" title="Гость — это сопровождающий без права охоты">Гостей</span>  {{guestsCount}}</p>
                             </div>
-                            <div class="d-flex col">
+                            <div class="d-flex form-group col-sm-12 col-lg-6">
                                 <span>{{tour.number_of_guests_min}}</span>
-                                <input type="range" name="guests" v-model="guestsCount" class="custom-range" value="0" :min="tour.number_of_guests_min" :max="tour.number_of_guests_max" step="1">
+                                <input type="range" name="guests" v-model="guests" class="custom-range" value="0" :min="tour.number_of_guests_min" :max="tour.number_of_guests_max" step="1">
                                 <span>{{tour.number_of_guests_max}}</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Как к вам обращаться <span class="text-muted">не обязательно</span></label>
                             <input name="name" placeholder="Имя" v-model="name" type="text" class="form-control">
+                            <div class="invalid-feedback">
+                                {{validateForm.name}}
+                            </div>
                         </div>
                         <div class="form-row pb-3">
-                            <div class="col">
+                            <div class="form-group col-sm-12 col-lg-6">
                                 <label>Куда звонить</label>
                                 <input v-model="phone" name="phone" placeholder="Номер телефона" type="text" class="form-control" required>
+                                <div class="invalid-feedback">
+                                    {{validateForm.phone}}
+                                </div>
                             </div>
-                            <div class="col">
+                            <div class="form-group col-sm-12 col-lg-6">
                                 <label>Куда писать</label>
                                 <input  v-model="email" name="email" placeholder="Электронная почта" type="text" class="form-control" required>
+                                <div class="invalid-feedback">
+                                    {{validateForm.email}}
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -58,7 +67,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn hunter-btn-orange" @click="sendMail" data-toggle="modal" data-target="#tourModal">Отправить заявку</button>
+                    <button type="button" class="btn hunter-btn-orange" @click="sendMail">Отправить заявку</button>
                 </div>
             </div>
         </div>
@@ -75,29 +84,36 @@ export default {
     ],
     computed: {
         huntersCount(){
-            return this.inhunters;
+            return this.hunters;
         },
         guestsCount(){
-            return this.inguests
+            return this.guests
         }
     },
     mounted() {
-        this.hunters = this.huntersCount
     },
     data(){
         return {
-            hunters: 1,
+            hunters: 0,
             guests: 0,
             name: '',
             phone: '',
             note: '',
-            email: ''
+            email: '',
+            validateForm: {
+                name: '',
+                email: '',
+                phone: ''
+            }
         }
     },
     methods: {
         changeTip(event){
             let target = event.target;
             target.title = target.value
+        },
+        changeRange(e, item){
+          this[item] = e.target.value
         },
         sendMail(){
             var formElement = this.$refs.form;
@@ -119,7 +135,16 @@ export default {
                     }
                 }
             }).then((response) => {
+                $(this.$refs.modal).modal()
             })
+        }
+    },
+    watch:{
+        inguests(val){
+            this.guests = val
+        },
+        inhunters(val){
+            this.hunters = val
         }
     }
 }

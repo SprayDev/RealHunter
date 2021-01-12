@@ -8448,107 +8448,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "tour",
   props: ['tour', 'days', 'tours'],
@@ -8706,6 +8605,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "header",
   props: ['url'],
+  data: function data() {
+    return {
+      screen: window.innerWidth
+    };
+  },
+  computed: {
+    screenWidth: function screenWidth() {
+      return window.innerWidth;
+    }
+  },
   mounted: function mounted() {
     var _this = this;
 
@@ -8717,6 +8626,17 @@ __webpack_require__.r(__webpack_exports__);
         item.classList.add('active');
       }
     });
+  },
+  methods: {
+    isMobile: function isMobile() {
+      var check = false;
+
+      (function (a) {
+        if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = true;
+      })(navigator.userAgent || navigator.vendor || window.opera);
+
+      return check;
+    }
   }
 });
 
@@ -8799,6 +8719,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     sendMail: function sendMail() {
+      var _this = this;
+
       var formElement = this.$refs.form;
       var data = new FormData(formElement);
       var vm = this;
@@ -8817,7 +8739,9 @@ __webpack_require__.r(__webpack_exports__);
             vm.validateForm[index] = errors[index][0];
           }
         }
-      }).then(function (response) {});
+      }).then(function (response) {
+        $(_this.$refs.modal).modal();
+      });
     }
   }
 });
@@ -8879,6 +8803,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "hunter-perm-modal",
   props: ['license'],
@@ -8894,7 +8830,12 @@ __webpack_require__.r(__webpack_exports__);
       name: '',
       phone: '',
       note: '',
-      email: ''
+      email: '',
+      validateForm: {
+        name: '',
+        email: '',
+        phone: ''
+      }
     };
   },
   methods: {
@@ -8910,6 +8851,8 @@ __webpack_require__.r(__webpack_exports__);
       };
     },
     sendMail: function sendMail() {
+      var _this = this;
+
       var formElement = this.$refs.form;
       var data = new FormData(formElement);
       data.append('season', this.season.season);
@@ -8929,7 +8872,9 @@ __webpack_require__.r(__webpack_exports__);
             vm.validateForm[index] = errors[index][0];
           }
         }
-      }).then(function (response) {});
+      }).then(function (response) {
+        $(_this.$refs.modal).modal();
+      });
     }
   }
 });
@@ -9012,28 +8957,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "hunter-tour-modal",
   props: ['tour', 'inhunters', 'inguests'],
   computed: {
     huntersCount: function huntersCount() {
-      return this.inhunters;
+      return this.hunters;
     },
     guestsCount: function guestsCount() {
-      return this.inguests;
+      return this.guests;
     }
   },
-  mounted: function mounted() {
-    this.hunters = this.huntersCount;
-  },
+  mounted: function mounted() {},
   data: function data() {
     return {
-      hunters: 1,
+      hunters: 0,
       guests: 0,
       name: '',
       phone: '',
       note: '',
-      email: ''
+      email: '',
+      validateForm: {
+        name: '',
+        email: '',
+        phone: ''
+      }
     };
   },
   methods: {
@@ -9041,7 +8998,12 @@ __webpack_require__.r(__webpack_exports__);
       var target = event.target;
       target.title = target.value;
     },
+    changeRange: function changeRange(e, item) {
+      this[item] = e.target.value;
+    },
     sendMail: function sendMail() {
+      var _this = this;
+
       var formElement = this.$refs.form;
       var data = new FormData(formElement);
       var vm = this;
@@ -9059,7 +9021,17 @@ __webpack_require__.r(__webpack_exports__);
             vm.validateForm[index] = errors[index][0];
           }
         }
-      }).then(function (response) {});
+      }).then(function (response) {
+        $(_this.$refs.modal).modal();
+      });
+    }
+  },
+  watch: {
+    inguests: function inguests(val) {
+      this.guests = val;
+    },
+    inhunters: function inhunters(val) {
+      this.hunters = val;
     }
   }
 });
@@ -9171,7 +9143,8 @@ __webpack_require__.r(__webpack_exports__);
         fixedHeight: 41,
         isNavigation: true,
         gap: 10,
-        focus: 'center',
+        arrows: false,
+        focus: 'left',
         pagination: false,
         cover: true,
         breakpoints: {
@@ -45920,13 +45893,13 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "row" },
+      { staticClass: "row mt-3" },
       _vm._l(_vm.first_three, function(item, index) {
         return _c(
           "div",
           {
             key: item.id,
-            staticClass: "col-md-4",
+            staticClass: "col-md-4 py-3",
             on: {
               click: function($event) {
                 return _vm.go_to(item.id)
@@ -45958,9 +45931,14 @@ var render = function() {
                     }
                   },
                   [
-                    _c("h3", { staticClass: "text-white p-3" }, [
-                      _vm._v(_vm._s(item.title))
-                    ])
+                    _c(
+                      "h3",
+                      {
+                        staticClass: "text-white p-3",
+                        staticStyle: { "font-size": "1.5rem" }
+                      },
+                      [_vm._v(_vm._s(item.title))]
+                    )
                   ]
                 )
               ]
@@ -45980,7 +45958,7 @@ var render = function() {
             "div",
             {
               key: item.id,
-              staticClass: "col-lg-3 col-md-4 col-sm-6 py-2 ",
+              staticClass: "col-lg-3 col-md-4 col-sm-6 py-3 ",
               on: {
                 click: function($event) {
                   return _vm.go_to(item.id)
@@ -45992,7 +45970,7 @@ var render = function() {
                 "div",
                 { staticClass: "row hunter-perm-sm-item cursor-pointer" },
                 [
-                  _c("div", { staticClass: "col-7 pr-0" }, [
+                  _c("div", { staticClass: "col-7 col-lg-6 col- pr-0" }, [
                     _c("img", {
                       staticClass: "rounded-circle",
                       attrs: {
@@ -46005,7 +45983,10 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "div",
-                    { staticClass: "col-5 d-flex align-items-center pl-0" },
+                    {
+                      staticClass:
+                        "col-5 col-lg-6 d-flex align-items-center pl-0"
+                    },
                     [_c("h4", [_vm._v(_vm._s(item.title))])]
                   )
                 ]
@@ -46026,7 +46007,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "form-group col-md-4" }, [
+      _c("div", { staticClass: "form-group col-md-4 mb-3" }, [
         _c("label", { attrs: { for: "region" } }, [_vm._v("Регион охоты")]),
         _vm._v(" "),
         _c("select", { staticClass: "form-control", attrs: { id: "region" } }, [
@@ -46174,18 +46155,14 @@ var render = function() {
       _c("div", { staticClass: "row" }, [
         _c(
           "div",
-          { staticClass: "col-lg-8 col-md-7 col-sm-6" },
-          [
-            _c("hunter-slider"),
-            _vm._v(" "),
-            _c("hunter-text-block", { attrs: { tour: _vm.tour } })
-          ],
+          { staticClass: "col-lg-8 col-md-7 col-sm-6 mb-3" },
+          [_c("hunter-slider")],
           1
         ),
         _vm._v(" "),
         _c("div", { staticClass: "col-lg-4 col-md-5 col-sm-6" }, [
           _c("h5", { staticClass: "font-weight-bolder" }, [
-            _vm._v("Сезон охоты")
+            _vm._v("Бронирование")
           ]),
           _vm._v(" "),
           _c(
@@ -46205,7 +46182,15 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "card-text font-weight-bold" }, [
-                  _c("span", {}, [_vm._v("Охотников")]),
+                  _c(
+                    "span",
+                    {
+                      attrs: {
+                        title: "Гость — это сопровождающий без права охоты"
+                      }
+                    },
+                    [_vm._v("Охотников")]
+                  ),
                   _vm._v(
                     " " +
                       _vm._s(_vm.tour.number_of_hunters_min) +
@@ -46215,7 +46200,15 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "card-text font-weight-bold" }, [
-                  _c("span", {}, [_vm._v("Гостей")]),
+                  _c(
+                    "span",
+                    {
+                      attrs: {
+                        title: "Гость — это сопровождающий без права охоты"
+                      }
+                    },
+                    [_vm._v("Гостей")]
+                  ),
                   _vm._v(
                     " " +
                       _vm._s(_vm.tour.number_of_guests_min) +
@@ -46427,8 +46420,7 @@ var render = function() {
           _c(
             "a",
             {
-              staticClass:
-                "btn ml-auto hunter-start-hunt-btn hunter-border-orange hunter-text-orange w-100",
+              staticClass: "btn hunter-btn-orange ml-auto w-100",
               attrs: {
                 href: "#",
                 "data-toggle": "modal",
@@ -46440,14 +46432,59 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("h1", { staticClass: "font-weight-bold" }, [_vm._v("Цены на услуги")]),
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "div",
+          { staticClass: "col-lg-8 col-md-7 col-sm-6" },
+          [_c("hunter-text-block", { attrs: { tour: _vm.tour } })],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-4 col-md-5 col-sm-6" })
+      ]),
+      _vm._v(" "),
+      _c("h3", { staticClass: "font-weight-bold p-2" }, [
+        _vm._v("Цены на услуги")
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "row px-0 pt-4" }, [
-        _vm._m(2),
+        _c(
+          "div",
+          { staticClass: "col-lg-8 col-md-7 col-sm-6" },
+          _vm._l(_vm.tour.prices, function(price) {
+            return _c("div", { key: price.id, staticClass: "row" }, [
+              _c(
+                "div",
+                { staticClass: "col col-xs-4 d-flex align-items-center" },
+                [_c("h6", [_vm._v(_vm._s(price.title))])]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "col col-xs-8 d-flex align-items-center justify-content-end"
+                },
+                [
+                  _c("h6", { staticClass: "hunter-perm-title" }, [
+                    _c("span", [
+                      _vm._v(
+                        _vm._s(price.amount / 100) + " " + _vm._s(price.unit)
+                      )
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "w-100 border-top mb-3" })
+            ])
+          }),
+          0
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "col-lg-4 col-md-5 col-sm-6" }, [
           _c("h5", { staticClass: "font-weight-bolder" }, [
-            _vm._v("Сезон охоты")
+            _vm._v("Бронирование")
           ]),
           _vm._v(" "),
           _c(
@@ -46490,7 +46527,7 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("div", { staticClass: "row pb-2" }, [
-            _vm._m(3),
+            _vm._m(2),
             _vm._v(" "),
             _c("div", { staticClass: "col-4" }, [
               _c("div", { staticClass: "input-group" }, [
@@ -46591,7 +46628,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "row pb-2" }, [
-            _vm._m(4),
+            _vm._m(3),
             _vm._v(" "),
             _c("div", { staticClass: "col-4" }, [
               _c("div", { staticClass: "input-group" }, [
@@ -46689,8 +46726,7 @@ var render = function() {
           _c(
             "a",
             {
-              staticClass:
-                "btn ml-auto hunter-start-hunt-btn hunter-border-orange hunter-text-orange w-100",
+              staticClass: "btn hunter-btn-orange ml-auto w-100",
               attrs: {
                 href: "#",
                 "data-toggle": "modal",
@@ -46703,41 +46739,48 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "container px-0 mx-0 mt-5" }, [
-        _vm._m(5),
+        _vm._m(4),
         _vm._v(" "),
         _c(
           "div",
           { staticClass: "card-deck" },
           _vm._l(_vm.tours, function(item, index) {
-            return _c("div", { key: item.id, staticClass: "card border-0" }, [
-              _vm._m(6, true),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body hunter-card-body" }, [
-                _c("h5", { staticClass: "card-title hunter-card-title" }, [
-                  _vm._v(_vm._s(item.title))
+            return _c(
+              "div",
+              {
+                key: item.id,
+                staticClass: "card border-0 col-lg-4 col-md-4 col-sm-6 col-12"
+              },
+              [
+                _vm._m(5, true),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body hunter-card-body" }, [
+                  _c("h5", { staticClass: "card-title hunter-card-title" }, [
+                    _vm._v(_vm._s(item.title))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "card-text" }, [
+                    _vm._v(_vm._s(item.location.title))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "card-text" }, [
+                    _vm._v(
+                      _vm._s(item.days_av) +
+                        ", с " +
+                        _vm._s(item.available_period_min) +
+                        " до " +
+                        _vm._s(item.available_period_max)
+                    )
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "card-text" }, [
-                  _vm._v(_vm._s(item.location.title))
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "card-text" }, [
-                  _vm._v(
-                    _vm._s(item.days_av) +
-                      ", с " +
-                      _vm._s(item.available_period_min) +
-                      " до " +
-                      _vm._s(item.available_period_max)
-                  )
+                _c("div", {}, [
+                  _c("h5", { staticClass: "hunter-text-orange" }, [
+                    _vm._v("от " + _vm._s(item.PriceFull) + " руб")
+                  ])
                 ])
-              ]),
-              _vm._v(" "),
-              _c("div", {}, [
-                _c("h3", { staticClass: "hunter-text-orange" }, [
-                  _vm._v("от " + _vm._s(item.PriceFull) + " руб")
-                ])
-              ])
-            ])
+              ]
+            )
           }),
           0
         )
@@ -46789,246 +46832,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-8 col-md-7 col-sm-6" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col d-flex align-items-center" }, [
-          _c("p", [_vm._v("Проживание на базе")])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col d-flex align-items-center justify-content-end" },
-          [
-            _c("h4", { staticClass: "hunter-perm-title" }, [
-              _c("span", [_vm._v("1500 руб/сутки на 1 человека")])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-100 border mb-3" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col d-flex align-items-center" }, [
-          _c("p", [_vm._v("Баня")])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col d-flex align-items-center justify-content-end" },
-          [
-            _c("h4", { staticClass: "hunter-perm-title" }, [
-              _c("span", [_vm._v("1000 руб/час")])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-100 border mb-3" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col d-flex align-items-center" }, [
-          _c("p", [_vm._v("Кабан до 1 года")])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col d-flex align-items-center justify-content-end" },
-          [
-            _c("h4", { staticClass: "hunter-perm-title" }, [
-              _c("span", [_vm._v("10 000 руб")])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-100 border mb-3" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col d-flex align-items-center" }, [
-          _c("p", [_vm._v("Кабан от 1 до 2 лет")])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col d-flex align-items-center justify-content-end" },
-          [
-            _c("h4", { staticClass: "hunter-perm-title" }, [
-              _c("span", [_vm._v("15 000 руб")])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-100 border mb-3" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col d-flex align-items-center" }, [
-          _c("p", [_vm._v("Самка кабана взрослая без выводка от 2 лет")])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col d-flex align-items-center justify-content-end" },
-          [
-            _c("h4", { staticClass: "hunter-perm-title" }, [
-              _c("span", [_vm._v("20 000 руб")])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-100 border mb-3" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col d-flex align-items-center" }, [
-          _c("p", [_vm._v("Самец взрослый (секач) от 3 лет")])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col d-flex align-items-center justify-content-end" },
-          [
-            _c("h4", { staticClass: "hunter-perm-title" }, [
-              _c("span", [_vm._v("25 000 руб")])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-100 border mb-3" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col d-flex align-items-center" }, [
-          _c("p", [_vm._v("Самка кабана взрослая с выводком")])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col d-flex align-items-center justify-content-end" },
-          [
-            _c("h4", { staticClass: "hunter-perm-title" }, [
-              _c("span", [_vm._v("50 000 руб")])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-100 border mb-3" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col d-flex align-items-center" }, [
-          _c("p", [_vm._v("Услуги егеря охота с вышки")])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col d-flex align-items-center justify-content-end" },
-          [
-            _c("h4", { staticClass: "hunter-perm-title" }, [
-              _c("span", [_vm._v("1000 руб/чел/день")])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-100 border mb-3" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col d-flex align-items-center" }, [
-          _c("p", [_vm._v("Стоимость трофея (лось)")])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col d-flex align-items-center justify-content-end" },
-          [
-            _c("h4", { staticClass: "hunter-perm-title" }, [
-              _c("span", [_vm._v("60 000 руб")])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-100 border mb-3" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col d-flex align-items-center" }, [
-          _c("p", [_vm._v("Стоимость трофея (марал)")])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col d-flex align-items-center justify-content-end" },
-          [
-            _c("h4", { staticClass: "hunter-perm-title" }, [
-              _c("span", [_vm._v("50 000 руб")])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-100 border mb-3" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col d-flex align-items-center" }, [
-          _c("p", [_vm._v("Егерское обслуживание")])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col d-flex align-items-center justify-content-end" },
-          [
-            _c("h4", { staticClass: "hunter-perm-title" }, [
-              _c("span", [_vm._v("3000 руб/чел/день")])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-100 border mb-3" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col d-flex align-items-center" }, [
-          _c("p", [_vm._v("Стоимость трофея (косуля)")])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col d-flex align-items-center justify-content-end" },
-          [
-            _c("h4", { staticClass: "hunter-perm-title" }, [
-              _c("span", [_vm._v("15 000 руб")])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-100 border mb-3" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col d-flex align-items-center" }, [
-          _c("p", [_vm._v("Егерское обслуживание")])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col d-flex align-items-center justify-content-end" },
-          [
-            _c("h4", { staticClass: "hunter-perm-title" }, [
-              _c("span", [_vm._v("1500 руб/чел/день")])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-100 border mb-3" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c(
       "div",
       { staticClass: "col-8 card-tour d-flex align-items-center" },
@@ -47059,7 +46862,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "hunter-tours-h2 pb-3" }, [
+    return _c("h1", { staticClass: "hunter-tours-h2 pb-3" }, [
       _c("span", [_vm._v("Туры")]),
       _vm._v(" ближайшие")
     ])
@@ -47114,17 +46917,13 @@ var render = function() {
       _c("div", { staticClass: "row py-4 mx-0" }, [
         _vm._m(0),
         _vm._v(" "),
-        _c(
-          "div",
-          { class: "col-6 col-md " + (!_vm.isMobile() ? "ml-5" : "") },
-          [
-            _c(
-              "a",
-              { staticClass: "nav-link px-0", attrs: { href: "/company" } },
-              [_vm._v("О Компании")]
-            )
-          ]
-        ),
+        _c("div", { class: "col-6 col-md-2 " + (!_vm.isMobile() ? "" : "") }, [
+          _c(
+            "a",
+            { staticClass: "nav-link px-0", attrs: { href: "/company" } },
+            [_vm._v("О Компании")]
+          )
+        ]),
         _vm._v(" "),
         _vm._m(1),
         _vm._v(" "),
@@ -47168,7 +46967,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-6 col-md" }, [
+    return _c("div", { staticClass: "col-6 col-md-1" }, [
       _c("a", { staticClass: "nav-link px-0", attrs: { href: "/blog" } }, [
         _vm._v("Блог")
       ])
@@ -47178,7 +46977,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-6 col-md" }, [
+    return _c("div", { staticClass: "col-6 col-md-2" }, [
       _c("a", { staticClass: "nav-link px-0", attrs: { href: "/tours" } }, [
         _vm._v("Каталог туров")
       ])
@@ -47205,9 +47004,9 @@ var staticRenderFns = [
         "a",
         {
           staticClass: "nav-link hunter-text-orange font-weight-bold",
-          attrs: { href: "#" }
+          attrs: { href: "tel:+79835083158" }
         },
-        [_vm._v("+7 912 350 50 50")]
+        [_vm._v("+7 983 508 31 58")]
       )
     ])
   },
@@ -47220,7 +47019,9 @@ var staticRenderFns = [
         _c("a", { staticClass: "hunter-policy", attrs: { href: "#" } }, [
           _vm._v("Политика конфиденциальности")
         ]),
-        _vm._v(" 2020, ООО Название компании\n            ")
+        _vm._v(
+          ' 2020, ООО "РЕАЛ ТУР" ИНН 2465268090, ОГРН 1122468011291\n            '
+        )
       ])
     ])
   }
@@ -47246,7 +47047,41 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "nav",
+    { staticClass: "navbar navbar-expand-lg bg-light hunter-nav" },
+    [
+      _c("div", { staticClass: "container" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "collapse navbar-collapse justify-content-end",
+            attrs: { id: "navbarNav" }
+          },
+          [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "hunter-phone" }, [
+              _c(
+                "a",
+                {
+                  class:
+                    "nav-link " +
+                    (_vm.screenWidth < 991 ? "btn hunter-btn-orange" : ""),
+                  attrs: { href: "tel:+79835083158" }
+                },
+                [_vm._v("+7 983 508 31 58")]
+              )
+            ])
+          ]
+        )
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
@@ -47254,94 +47089,66 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "nav",
-      { staticClass: "navbar navbar-expand-lg bg-light hunter-nav" },
-      [
-        _c("div", { staticClass: "container" }, [
-          _c(
-            "a",
-            { staticClass: "navbar-brand hunter-brand", attrs: { href: "/" } },
-            [_c("img", { attrs: { src: "/images/logotype.svg" } })]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "navbar-toggler",
-              attrs: {
-                type: "button",
-                "data-toggle": "collapse",
-                "data-target": "#navbarNav",
-                "aria-controls": "navbarNav",
-                "aria-expanded": "false",
-                "aria-label": "Toggle navigation"
-              }
-            },
-            [_c("span", { staticClass: "navbar-toggler-icon" })]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "collapse navbar-collapse justify-content-end",
-              attrs: { id: "navbarNav" }
-            },
-            [
-              _c("ul", { staticClass: "navbar-nav hunter-navbar-nav" }, [
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { href: "/permissions" }
-                    },
-                    [_vm._v("Разрешения")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    { staticClass: "nav-link", attrs: { href: "/tours" } },
-                    [_vm._v("Туры")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    { staticClass: "nav-link", attrs: { href: "/blog" } },
-                    [_vm._v("Блог")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    { staticClass: "nav-link", attrs: { href: "/company" } },
-                    [_vm._v("О Компании")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    { staticClass: "nav-link", attrs: { href: "/contacts" } },
-                    [_vm._v("Контакты")]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "hunter-phone" }, [
-                _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                  _vm._v("+7 912 350 50 50")
-                ])
-              ])
-            ]
-          )
-        ])
-      ]
+      "a",
+      { staticClass: "navbar-brand hunter-brand", attrs: { href: "/" } },
+      [_c("img", { attrs: { src: "/images/logotype.svg" } })]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "navbar-toggler",
+        attrs: {
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarNav",
+          "aria-controls": "navbarNav",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        }
+      },
+      [_c("span", { staticClass: "navbar-toggler-icon" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "navbar-nav hunter-navbar-nav" }, [
+      _c("li", { staticClass: "nav-item" }, [
+        _c("a", { staticClass: "nav-link", attrs: { href: "/permissions" } }, [
+          _vm._v("Разрешения")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "nav-item" }, [
+        _c("a", { staticClass: "nav-link", attrs: { href: "/tours" } }, [
+          _vm._v("Туры")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "nav-item" }, [
+        _c("a", { staticClass: "nav-link", attrs: { href: "/blog" } }, [
+          _vm._v("Блог")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "nav-item" }, [
+        _c("a", { staticClass: "nav-link", attrs: { href: "/company" } }, [
+          _vm._v("О Компании")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "nav-item" }, [
+        _c("a", { staticClass: "nav-link", attrs: { href: "/contacts" } }, [
+          _vm._v("Контакты")
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -47418,7 +47225,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-row pb-3" }, [
-                _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "form-group col-lg-6 col-xs-12" }, [
                   _c("label", [_vm._v("Куда звонить")]),
                   _vm._v(" "),
                   _c("input", {
@@ -47456,7 +47263,7 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "form-group col-lg-6 col-xs-12" }, [
                   _c("label", [_vm._v("Куда писать")]),
                   _vm._v(" "),
                   _c("input", {
@@ -47650,48 +47457,55 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "modal-body" }, [
             _c("form", { ref: "form" }, [
-              _c(
-                "div",
-                { staticClass: "form-row" },
-                _vm._l(_vm.license.seasons, function(item, index) {
-                  return _c(
-                    "div",
-                    { staticClass: "form-check form-check-inline col" },
-                    [
-                      _c("input", {
-                        staticClass: "form-check-input",
-                        attrs: {
-                          "data-season": item.date_from + " - " + item.date_to,
-                          type: "checkbox",
-                          id: "season" + index
-                        },
-                        domProps: {
-                          checked: item.id == _vm.season.id ? true : false
-                        },
-                        on: {
-                          change: function($event) {
-                            return _vm.setSeason($event, item.id)
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Выберите сезон охоты")]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-row" },
+                  _vm._l(_vm.license.seasons, function(item, index) {
+                    return _c(
+                      "div",
+                      { staticClass: "form-check form-check-inline col" },
+                      [
+                        _c("input", {
+                          staticClass: "form-check-input",
+                          attrs: {
+                            "data-season":
+                              item.date_from + " - " + item.date_to,
+                            type: "checkbox",
+                            id: "season" + index
+                          },
+                          domProps: {
+                            checked: item.id == _vm.season.id ? true : false
+                          },
+                          on: {
+                            change: function($event) {
+                              return _vm.setSeason($event, item.id)
+                            }
                           }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "label",
-                        {
-                          staticClass: "form-check-label",
-                          attrs: { for: "season" + index }
-                        },
-                        [
-                          _vm._v(
-                            _vm._s(item.date_from) + "-" + _vm._s(item.date_to)
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                }),
-                0
-              ),
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "season" + index }
+                          },
+                          [
+                            _vm._v(
+                              _vm._s(item.date_from) +
+                                "-" +
+                                _vm._s(item.date_to)
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  }),
+                  0
+                )
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _vm._m(1),
@@ -47716,11 +47530,19 @@ var render = function() {
                       _vm.name = $event.target.value
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.validateForm.name) +
+                      "\n                        "
+                  )
+                ])
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-row pb-3" }, [
-                _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "form-group col-lg-6 col-xs-12" }, [
                   _c("label", [_vm._v("Куда звонить")]),
                   _vm._v(" "),
                   _c("input", {
@@ -47748,10 +47570,18 @@ var render = function() {
                         _vm.phone = $event.target.value
                       }
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(_vm.validateForm.phone) +
+                        "\n                            "
+                    )
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "form-group col-lg-6 col-xs-12" }, [
                   _c("label", [_vm._v("Куда писать")]),
                   _vm._v(" "),
                   _c("input", {
@@ -47779,7 +47609,15 @@ var render = function() {
                         _vm.email = $event.target.value
                       }
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(_vm.validateForm.email) +
+                        "\n                            "
+                    )
+                  ])
                 ])
               ]),
               _vm._v(" "),
@@ -47892,6 +47730,7 @@ var render = function() {
   return _c(
     "div",
     {
+      ref: "modal",
       staticClass: "modal fade",
       attrs: {
         id: "tourModal",
@@ -47912,7 +47751,7 @@ var render = function() {
               _vm._m(2),
               _vm._v(" "),
               _c("div", { staticClass: "row pb-3" }, [
-                _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "form-group col-sm-12 col-lg-6" }, [
                   _c("p", { staticClass: "card-text" }, [
                     _vm._v("Количество "),
                     _c(
@@ -47929,41 +47768,50 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "d-flex col" }, [
-                  _c("span", [_vm._v(_vm._s(_vm.tour.number_of_hunters_min))]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.huntersCount,
-                        expression: "huntersCount"
+                _c(
+                  "div",
+                  { staticClass: "d-flex form-group col-sm-12 col-lg-6" },
+                  [
+                    _c("span", [
+                      _vm._v(_vm._s(_vm.tour.number_of_hunters_min))
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.hunters,
+                          expression: "hunters"
+                        }
+                      ],
+                      staticClass: "custom-range",
+                      attrs: {
+                        name: "hunters",
+                        type: "range",
+                        min: _vm.tour.number_of_hunters_min,
+                        value: "1",
+                        max: _vm.tour.number_of_hunters_max,
+                        step: "1"
+                      },
+                      domProps: { value: _vm.hunters },
+                      on: {
+                        change: function($event) {
+                          return _vm.changeRange($event, "hunters")
+                        },
+                        __r: function($event) {
+                          _vm.hunters = $event.target.value
+                        }
                       }
-                    ],
-                    staticClass: "custom-range",
-                    attrs: {
-                      name: "hunters",
-                      type: "range",
-                      min: _vm.tour.number_of_hunters_min,
-                      value: "1",
-                      max: _vm.tour.number_of_hunters_max,
-                      step: "1"
-                    },
-                    domProps: { value: _vm.huntersCount },
-                    on: {
-                      __r: function($event) {
-                        _vm.huntersCount = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("span", [_vm._v(_vm._s(_vm.tour.number_of_hunters_max))])
-                ])
+                    }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v(_vm._s(_vm.tour.number_of_hunters_max))])
+                  ]
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "row pb-3" }, [
-                _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "form-group col-sm-12 col-lg-6" }, [
                   _c("p", { staticClass: "card-text" }, [
                     _vm._v("Количество "),
                     _c(
@@ -47980,37 +47828,41 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "d-flex col" }, [
-                  _c("span", [_vm._v(_vm._s(_vm.tour.number_of_guests_min))]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.guestsCount,
-                        expression: "guestsCount"
+                _c(
+                  "div",
+                  { staticClass: "d-flex form-group col-sm-12 col-lg-6" },
+                  [
+                    _c("span", [_vm._v(_vm._s(_vm.tour.number_of_guests_min))]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.guests,
+                          expression: "guests"
+                        }
+                      ],
+                      staticClass: "custom-range",
+                      attrs: {
+                        type: "range",
+                        name: "guests",
+                        value: "0",
+                        min: _vm.tour.number_of_guests_min,
+                        max: _vm.tour.number_of_guests_max,
+                        step: "1"
+                      },
+                      domProps: { value: _vm.guests },
+                      on: {
+                        __r: function($event) {
+                          _vm.guests = $event.target.value
+                        }
                       }
-                    ],
-                    staticClass: "custom-range",
-                    attrs: {
-                      type: "range",
-                      name: "guests",
-                      value: "0",
-                      min: _vm.tour.number_of_guests_min,
-                      max: _vm.tour.number_of_guests_max,
-                      step: "1"
-                    },
-                    domProps: { value: _vm.guestsCount },
-                    on: {
-                      __r: function($event) {
-                        _vm.guestsCount = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("span", [_vm._v(_vm._s(_vm.tour.number_of_guests_max))])
-                ])
+                    }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v(_vm._s(_vm.tour.number_of_guests_max))])
+                  ]
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
@@ -48036,11 +47888,19 @@ var render = function() {
                       _vm.name = $event.target.value
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.validateForm.name) +
+                      "\n                        "
+                  )
+                ])
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-row pb-3" }, [
-                _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "form-group col-sm-12 col-lg-6" }, [
                   _c("label", [_vm._v("Куда звонить")]),
                   _vm._v(" "),
                   _c("input", {
@@ -48068,10 +47928,18 @@ var render = function() {
                         _vm.phone = $event.target.value
                       }
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(_vm.validateForm.phone) +
+                        "\n                            "
+                    )
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "form-group col-sm-12 col-lg-6" }, [
                   _c("label", [_vm._v("Куда писать")]),
                   _vm._v(" "),
                   _c("input", {
@@ -48099,7 +47967,15 @@ var render = function() {
                         _vm.email = $event.target.value
                       }
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(_vm.validateForm.email) +
+                        "\n                            "
+                    )
+                  ])
                 ])
               ]),
               _vm._v(" "),
@@ -48136,11 +48012,7 @@ var render = function() {
               "button",
               {
                 staticClass: "btn hunter-btn-orange",
-                attrs: {
-                  type: "button",
-                  "data-toggle": "modal",
-                  "data-target": "#tourModal"
-                },
+                attrs: { type: "button" },
                 on: { click: _vm.sendMail }
               },
               [_vm._v("Отправить заявку")]
@@ -48195,7 +48067,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group w-50" }, [
+    return _c("div", { staticClass: "form-group w-100" }, [
       _c("label", { attrs: { for: "exampleInputEmail1" } }, [
         _vm._v("Дата заезда")
       ]),

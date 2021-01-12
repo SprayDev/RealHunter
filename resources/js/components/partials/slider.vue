@@ -95,7 +95,8 @@
                     fixedHeight : 41,
                     isNavigation: true,
                     gap         : 10,
-                    focus       : 'center',
+                    arrows: false,
+                    focus       : 'left',
                     pagination  : false,
                     cover       : true,
                     breakpoints : {

@@ -5,12 +5,12 @@
         <h1 class="h1 pb-3">
             Туры охотные. Крутые
         </h1>
-        <p class="w-50 text-justify">
+        <p class="text-justify">
             Текст о предложении тура и что это такое. Туры совершенно разные и совершенно крутые. Наши туры самые адреналинистые. Вот почему. Дальше следует некоторое описание туров и их преимуществ, краткое.
         </p>
         <div class="row">
             @foreach($tours as $tour)
-                <div class="card border-0 col-lg-4 col-md-4 col-sm-6 cursor-pointer" onclick="window.location.href = 'tours/{{$tour->id}}'">
+                <div class="card border-0 col-lg-4 col-md-4 col-sm-6 cursor-pointer mb-4" onclick="window.location.href = 'tours/{{$tour->id}}'">
                     <div class="cutCorner-2">
                         <div class="hunter-images">
                             <img class="d-inline" src="{{asset('images/car.svg')}}">
@@ -33,7 +33,7 @@
                         <p class="card-text">{{$interval->format('%a дней')}}, с {{date('d.m.Y', strtotime($tour->available_period_min))}} до {{date('d.m.Y', strtotime($tour->available_period_max))}}</p>
                     </div>
                     <div class="">
-                        <h3 class="hunter-text-orange">от {{$tour->PriceFull}} руб</h3>
+                        <h5 class="hunter-text-orange">от {{$tour->PriceFull}} руб</h5>
                     </div>
                 </div>
             @endforeach

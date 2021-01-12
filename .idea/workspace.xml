@@ -2,26 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d9e9966-933a-47cf-9dcf-c8d25715409a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/RealHunt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RealHunt.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealHunter.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/indexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/indexController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Tour.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Tour.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/blog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/blog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/licenses.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/licenses.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/pages/tour.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/tour.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/partials/footer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partials/footer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/partials/header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partials/header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/partials/hunter-fb-modal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partials/hunter-fb-modal.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/partials/hunter-perm-modal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partials/hunter-perm-modal.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/partials/hunter-tour-modal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partials/hunter-tour-modal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/partials/textBlock.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partials/textBlock.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/partials/slider.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partials/slider.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/_variables.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/sass/custom.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/custom.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/company.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/company.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/contacts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/contacts.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/head.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/permission.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/permission.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/tours.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/tours.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,6 +236,10 @@
       <workItem from="1610027828566" duration="3782000" />
       <workItem from="1610079040025" duration="130000" />
       <workItem from="1610123364764" duration="3989000" />
+      <workItem from="1610272181262" duration="266000" />
+      <workItem from="1610365221679" duration="11496000" />
+      <workItem from="1610421006092" duration="5190000" />
+      <workItem from="1610429053045" duration="7624000" />
     </task>
     <servers />
   </component>

@@ -5,28 +5,28 @@
                 <div class="col-12 col-md mr-5 pl-0">
                     <a class="navbar-brand hunter-brand px-0" href="/"><img src="/images/logotype.svg"></a>
                 </div>
-                <div :class="`col-6 col-md ${!isMobile() ? 'ml-5' : ''}`" >
+                <div :class="`col-6 col-md-2 ${!isMobile() ? '' : ''}`" >
                     <a class="nav-link px-0" href="/company">О Компании</a>
                 </div>
                 <div class="col-6 col-md">
                     <a class="nav-link px-0" href="/contacts">Контакты</a>
                 </div>
-                <div class="col-6 col-md">
+                <div class="col-6 col-md-1">
                     <a class="nav-link px-0" href="/blog">Блог</a>
                 </div>
-                <div class="col-6 col-md">
+                <div class="col-6 col-md-2">
                     <a class="nav-link px-0" href="/tours">Каталог туров</a>
                 </div>
                 <div class="col-6 col-md">
                     <a class="nav-link px-0" href="/permissions">Разрешения</a>
                 </div>
                 <div class="hunter-phone">
-                    <a class="nav-link hunter-text-orange font-weight-bold" href="#">+7 912 350 50 50</a>
+                    <a class="nav-link hunter-text-orange font-weight-bold" href="tel:+79835083158">+7 983 508 31 58</a>
                 </div>
             </div>
             <div class="row pb-3">
                 <div class="col">
-                    <a href="#" class="hunter-policy">Политика конфиденциальности</a> 2020, ООО Название компании
+                    <a href="#" class="hunter-policy">Политика конфиденциальности</a> 2020, ООО "РЕАЛ ТУР" ИНН 2465268090, ОГРН 1122468011291
                 </div>
             </div>
         </div>

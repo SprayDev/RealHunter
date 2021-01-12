@@ -10,24 +10,36 @@
                 </div>
                 <div class="modal-body">
                     <form ref="form">
-                        <div class="form-row">
-                            <div class="form-check form-check-inline col" v-for="(item, index) in license.seasons">
-                                <input class="form-check-input" :checked="item.id==season.id ? true : false" :data-season="`${item.date_from} - ${item.date_to}`" type="checkbox" :id="`season${index}`" @change="setSeason($event, item.id)">
-                                <label class="form-check-label" :for="`season${index}`">{{item.date_from}}-{{ item.date_to }}</label>
+                        <div class="form-group">
+                            <label>Выберите сезон охоты</label>
+                            <div class="form-row">
+                                <div class="form-check form-check-inline col" v-for="(item, index) in license.seasons">
+                                    <input class="form-check-input" :checked="item.id==season.id ? true : false" :data-season="`${item.date_from} - ${item.date_to}`" type="checkbox" :id="`season${index}`" @change="setSeason($event, item.id)">
+                                    <label class="form-check-label" :for="`season${index}`">{{item.date_from}}-{{ item.date_to }}</label>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Как к вам обращаться <span class="text-muted">не обязательно</span></label>
                             <input name="name" placeholder="Имя" v-model="name" type="text" class="form-control">
+                            <div class="invalid-feedback">
+                                {{validateForm.name}}
+                            </div>
                         </div>
                         <div class="form-row pb-3">
-                            <div class="col">
+                            <div class="form-group col-lg-6 col-xs-12">
                                 <label>Куда звонить</label>
                                 <input v-model="phone" name="phone" placeholder="Номер телефона" type="text" class="form-control" required>
+                                <div class="invalid-feedback">
+                                    {{validateForm.phone}}
+                                </div>
                             </div>
-                            <div class="col">
+                            <div class="form-group col-lg-6 col-xs-12">
                                 <label>Куда писать</label>
                                 <input  v-model="email" name="email" placeholder="Электронная почта" type="text" class="form-control" required>
+                                <div class="invalid-feedback">
+                                    {{validateForm.email}}
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -60,7 +72,12 @@ export default {
             name: '',
             phone: '',
             note: '',
-            email: ''
+            email: '',
+            validateForm: {
+                name: '',
+                email: '',
+                phone: ''
+            }
         }
     },
     methods: {
@@ -97,6 +114,7 @@ export default {
                     }
                 }
             }).then((response) => {
+                $(this.$refs.modal).modal();
             })
         }
     }

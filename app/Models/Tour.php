@@ -12,7 +12,7 @@ class Tour extends Model
 
     public function getPriceFullAttribute()
     {
-        return number_format($this->cost/100, '2', '.', ' ');
+        return number_format($this->cost/100, '0', '', ' ');
     }
 
     public function pictures()
@@ -42,5 +42,10 @@ class Tour extends Model
     public function facilities()
     {
         return $this->hasMany(facilities::class);
+    }
+
+    public function prices()
+    {
+        return $this->hasMany(prices::class);
     }
 }
