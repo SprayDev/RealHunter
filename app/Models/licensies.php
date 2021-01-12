@@ -26,6 +26,6 @@ class licensies extends Model
 
     public function getPriceFullAttribute()
     {
-        return number_format($this->cost/100, '2', '.', ' ');
+        return number_format($this->cost/100, '0', '', ' ');
     }
 }

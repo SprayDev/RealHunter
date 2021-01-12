@@ -27,6 +27,8 @@ class feedBack extends Mailable
         'date' => 'Дата заезда',
         'hunters' => 'Количество охотников',
         'guests' => 'Количество гостей',
+        'perm_title' => 'Разрешение: ',
+        'tour_title' => 'Тур: '
     ];
 
     public function __construct($data)

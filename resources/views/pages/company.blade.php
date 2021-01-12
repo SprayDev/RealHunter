@@ -22,4 +22,5 @@
         </p>
     </div>
 </div>
+<div class="container w-100 border"></div>
 @endsection

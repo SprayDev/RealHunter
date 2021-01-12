@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\Phone;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SendMailRequest extends FormRequest
@@ -33,9 +34,9 @@ class SendMailRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required',
+            'email' => 'required|email',
 //            'name' => 'required',
-            'phone' => 'required'
+            'phone' => ['required', new Phone]
         ];
     }
 
@@ -43,8 +44,9 @@ class SendMailRequest extends FormRequest
     {
         return [
             'email.required' => ':attribute обязательное поле!',
+            'email.email' => 'Неверный формат поля!',
             'name.required' => ':attribute обязательное поле!',
-            'phone.required' => ':attribute обязательное поле!'
+            'phone.required' => ':attribute обязательное поле!',
         ];
     }
 }

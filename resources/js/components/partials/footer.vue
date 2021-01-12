@@ -26,7 +26,7 @@
             </div>
             <div class="row pb-3">
                 <div class="col">
-                    <a href="#" class="hunter-policy">Политика конфиденциальности</a> 2020, ООО "РЕАЛ ТУР" ИНН 2465268090, ОГРН 1122468011291
+                    <p style="color:#C4C4C4"><a href="#" style="color:#C4C4C4" class="hunter-policy">Политика конфиденциальности</a> 2021, ООО "РЕАЛ ТУР" ИНН 2465268090, ОГРН 1122468011291</p>
                 </div>
             </div>
         </div>

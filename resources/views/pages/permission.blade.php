@@ -37,5 +37,24 @@
             </div>
         @endforeach
     </div>
+    <div aria-live="polite" aria-atomic="true" style="position: absolute; top: 15px; right: 15px;min-height: 0px;width: 25%; ">
+        <!-- Position it -->
+        <div style="position: absolute; top: 0; right: 0;z-index: 1000">
+
+            <!-- Then put toasts within -->
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="mr-auto">Обратная связь</strong>
+                    <small class="text-muted"></small>
+                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="toast-body">
+                    Сообщение отправлено, ждите ответа!
+                </div>
+            </div>
+        </div>
+    </div>
     <hunter-perm-modal :license="{{json_encode($perm)}}"></hunter-perm-modal>
 @endsection

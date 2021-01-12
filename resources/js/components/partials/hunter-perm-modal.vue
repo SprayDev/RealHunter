@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade" id="permModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="permModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" ref="modal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -14,7 +14,12 @@
                             <label>Выберите сезон охоты</label>
                             <div class="form-row">
                                 <div class="form-check form-check-inline col" v-for="(item, index) in license.seasons">
-                                    <input class="form-check-input" :checked="item.id==season.id ? true : false" :data-season="`${item.date_from} - ${item.date_to}`" type="checkbox" :id="`season${index}`" @change="setSeason($event, item.id)">
+                                    <input
+                                        :value="`${item.date_from} - ${ item.date_to }`"
+                                        class="form-check-input" type="checkbox"
+                                        :id="`season${index}`"
+                                        @change="setSeason($event, item.id)"
+                                        v-model="season">
                                     <label class="form-check-label" :for="`season${index}`">{{item.date_from}}-{{ item.date_to }}</label>
                                 </div>
                             </div>
@@ -49,7 +54,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn hunter-btn-orange" @click="sendMail" data-toggle="modal" data-target="#permModal">Отправить заявку</button>
+                    <button type="button" class="btn hunter-btn-orange" @click="sendMail">Отправить заявку</button>
                 </div>
             </div>
         </div>
@@ -65,10 +70,7 @@ export default {
     },
     data(){
         return {
-            season: {
-                id: 0,
-                season: ''
-            },
+            season: [],
             name: '',
             phone: '',
             note: '',
@@ -87,17 +89,15 @@ export default {
         },
         setSeason(event, id){
             let season = event.target.getAttribute('data-season');
-            this.season = {
-                id: id,
-                season: season
-            };
+            let vm = this;
         },
         sendMail(){
             var formElement = this.$refs.form;
             let data = new FormData(formElement)
-            data.append('season', this.season.season)
+            data.append('season', JSON.stringify(this.season))
+            data.append('perm_id', this.license.id)
+            data.append('perm_title', this.license.title)
             let vm = this;
-            console.log(data)
             axios.post('/api/sendMail', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
@@ -114,7 +114,8 @@ export default {
                     }
                 }
             }).then((response) => {
-                $(this.$refs.modal).modal();
+                $('.toast').toast('show');
+                $(this.$refs.modal).modal('hide');
             })
         }
     }

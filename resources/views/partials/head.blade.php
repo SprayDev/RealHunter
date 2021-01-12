@@ -12,7 +12,13 @@
     <script src="{{asset('js/app.js')}}" defer></script>
     @stack('styles')
     <script>
-
+        document.addEventListener('DOMContentLoaded', () => {
+            $('.toast').toast({
+                delay:2000,
+                autohide: false
+                // Other options
+            });
+        })
     </script>
     <style>
         .splide__slide img {

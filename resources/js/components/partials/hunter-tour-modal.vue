@@ -21,7 +21,7 @@
                             <div class="form-group col-sm-12 col-lg-6">
                                 <p class="card-text">Количество <span style="text-decoration-line: underline" title="Гость — это сопровождающий без права охоты">Охотников</span>  {{huntersCount}}</p>
                             </div>
-                            <div class="d-flex form-group col-sm-12 col-lg-6">
+                            <div class="d-flex form-group col-sm-12 col-lg-6" style="padding: 0 10px 0 0;">
                                 <span>{{tour.number_of_hunters_min}}</span>
                                 <input name="hunters" v-model="hunters" @change="changeRange($event,'hunters')" type="range" class="custom-range" :min="tour.number_of_hunters_min" value="1" :max="tour.number_of_hunters_max" step="1">
                                 <span>{{tour.number_of_hunters_max}}</span>
@@ -31,7 +31,7 @@
                             <div class="form-group col-sm-12 col-lg-6">
                                 <p class="card-text">Количество <span style="text-decoration-line: underline" title="Гость — это сопровождающий без права охоты">Гостей</span>  {{guestsCount}}</p>
                             </div>
-                            <div class="d-flex form-group col-sm-12 col-lg-6">
+                            <div class="d-flex form-group col-sm-12 col-lg-6" style="padding: 0 10px 0 0;">
                                 <span>{{tour.number_of_guests_min}}</span>
                                 <input type="range" name="guests" v-model="guests" class="custom-range" value="0" :min="tour.number_of_guests_min" :max="tour.number_of_guests_max" step="1">
                                 <span>{{tour.number_of_guests_max}}</span>
@@ -118,6 +118,8 @@ export default {
         sendMail(){
             var formElement = this.$refs.form;
             let data = new FormData(formElement)
+            data.append('tour_id', this.tour.id)
+            data.append('tour_title', this.tour.title)
             let vm = this;
             axios.post('/api/sendMail', data, {
                 headers: {
@@ -135,7 +137,8 @@ export default {
                     }
                 }
             }).then((response) => {
-                $(this.$refs.modal).modal()
+                $('.toast').toast('show');
+                $(this.$refs.modal).modal('hide')
             })
         }
     },

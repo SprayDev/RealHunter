@@ -8448,6 +8448,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "tour",
   props: ['tour', 'days', 'tours'],
@@ -8724,23 +8743,25 @@ __webpack_require__.r(__webpack_exports__);
       var formElement = this.$refs.form;
       var data = new FormData(formElement);
       var vm = this;
-      console.log(data);
       axios.post('/api/sendMail', data, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
+      }).then(function (response) {
+        $('.toast').toast('show');
+        $(_this.$refs.modal).modal('hide');
       })["catch"](function (error) {
-        var errors = error.response.data.errors;
+        if (error.response.status == 422) {
+          var errors = error.response.data.errors;
 
-        if (errors) {
-          for (var index in errors) {
-            var input_validate = formElement.querySelector("input[name=\"".concat(index, "\"]")).closest('div').querySelector('div[class="invalid-feedback"]');
-            input_validate.style.display = 'block';
-            vm.validateForm[index] = errors[index][0];
+          if (errors) {
+            for (var index in errors) {
+              var input_validate = formElement.querySelector("input[name=\"".concat(index, "\"]")).closest('div').querySelector('div[class="invalid-feedback"]');
+              input_validate.style.display = 'block';
+              vm.validateForm[index] = errors[index][0];
+            }
           }
         }
-      }).then(function (response) {
-        $(_this.$refs.modal).modal();
       });
     }
   }
@@ -8815,6 +8836,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "hunter-perm-modal",
   props: ['license'],
@@ -8823,10 +8849,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      season: {
-        id: 0,
-        season: ''
-      },
+      season: [],
       name: '',
       phone: '',
       note: '',
@@ -8845,19 +8868,17 @@ __webpack_require__.r(__webpack_exports__);
     },
     setSeason: function setSeason(event, id) {
       var season = event.target.getAttribute('data-season');
-      this.season = {
-        id: id,
-        season: season
-      };
+      var vm = this;
     },
     sendMail: function sendMail() {
       var _this = this;
 
       var formElement = this.$refs.form;
       var data = new FormData(formElement);
-      data.append('season', this.season.season);
+      data.append('season', JSON.stringify(this.season));
+      data.append('perm_id', this.license.id);
+      data.append('perm_title', this.license.title);
       var vm = this;
-      console.log(data);
       axios.post('/api/sendMail', data, {
         headers: {
           'Content-Type': 'multipart/form-data'
@@ -8873,7 +8894,8 @@ __webpack_require__.r(__webpack_exports__);
           }
         }
       }).then(function (response) {
-        $(_this.$refs.modal).modal();
+        $('.toast').toast('show');
+        $(_this.$refs.modal).modal('hide');
       });
     }
   }
@@ -9006,6 +9028,8 @@ __webpack_require__.r(__webpack_exports__);
 
       var formElement = this.$refs.form;
       var data = new FormData(formElement);
+      data.append('tour_id', this.tour.id);
+      data.append('tour_title', this.tour.title);
       var vm = this;
       axios.post('/api/sendMail', data, {
         headers: {
@@ -9022,7 +9046,8 @@ __webpack_require__.r(__webpack_exports__);
           }
         }
       }).then(function (response) {
-        $(_this.$refs.modal).modal();
+        $('.toast').toast('show');
+        $(_this.$refs.modal).modal('hide');
       });
     }
   },
@@ -46173,15 +46198,15 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "card-body" }, [
-                _c("p", { staticClass: "card-text font-weight-bold" }, [
+                _c("p", { staticClass: "card-text " }, [
                   _vm._v(_vm._s(_vm.tour.location.title) + " ")
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "card-text font-weight-bold" }, [
+                _c("p", { staticClass: "card-text " }, [
                   _vm._v(_vm._s(_vm.days))
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "card-text font-weight-bold" }, [
+                _c("p", { staticClass: "card-text " }, [
                   _c(
                     "span",
                     {
@@ -46199,7 +46224,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "card-text font-weight-bold" }, [
+                _c("p", { staticClass: "card-text " }, [
                   _c(
                     "span",
                     {
@@ -46495,15 +46520,15 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "card-body" }, [
-                _c("p", { staticClass: "card-text font-weight-bold" }, [
+                _c("p", { staticClass: "card-text " }, [
                   _vm._v(_vm._s(_vm.tour.location.title) + " ")
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "card-text font-weight-bold" }, [
+                _c("p", { staticClass: "card-text " }, [
                   _vm._v(_vm._s(_vm.days))
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "card-text font-weight-bold" }, [
+                _c("p", { staticClass: "card-text " }, [
                   _c("span", {}, [_vm._v("Охотников")]),
                   _vm._v(
                     " " +
@@ -46513,7 +46538,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "card-text font-weight-bold" }, [
+                _c("p", { staticClass: "card-text " }, [
                   _c("span", {}, [_vm._v("Гостей")]),
                   _vm._v(
                     " " +
@@ -46786,6 +46811,8 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
+      _vm._m(6),
+      _vm._v(" "),
       _c("hunter-tour-modal", {
         attrs: {
           tour: _vm.tour,
@@ -46806,7 +46833,7 @@ var staticRenderFns = [
       "div",
       { staticClass: "col-8 card-tour d-flex align-items-center" },
       [
-        _c("p", { staticClass: "card-text font-weight-bold" }, [
+        _c("p", { staticClass: "card-text " }, [
           _vm._v("Количество "),
           _c("span", {}, [_vm._v("охотников")])
         ])
@@ -46821,7 +46848,7 @@ var staticRenderFns = [
       "div",
       { staticClass: "col-8 card-tour d-flex align-items-center" },
       [
-        _c("p", { staticClass: "card-text font-weight-bold" }, [
+        _c("p", { staticClass: "card-text " }, [
           _vm._v("Количество "),
           _c("span", {}, [_vm._v("гостей")])
         ])
@@ -46836,7 +46863,7 @@ var staticRenderFns = [
       "div",
       { staticClass: "col-8 card-tour d-flex align-items-center" },
       [
-        _c("p", { staticClass: "card-text font-weight-bold" }, [
+        _c("p", { staticClass: "card-text " }, [
           _vm._v("Количество "),
           _c("span", {}, [_vm._v("охотников")])
         ])
@@ -46851,7 +46878,7 @@ var staticRenderFns = [
       "div",
       { staticClass: "col-8 card-tour d-flex align-items-center" },
       [
-        _c("p", { staticClass: "card-text font-weight-bold" }, [
+        _c("p", { staticClass: "card-text " }, [
           _vm._v("Количество "),
           _c("span", {}, [_vm._v("гостей")])
         ])
@@ -46889,6 +46916,82 @@ var staticRenderFns = [
         attrs: { src: "/images/bear.png", alt: "..." }
       })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticStyle: {
+          position: "absolute",
+          top: "15px",
+          right: "15px",
+          "min-height": "0px",
+          width: "25%"
+        },
+        attrs: { "aria-live": "polite", "aria-atomic": "true" }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticStyle: {
+              position: "absolute",
+              top: "0",
+              right: "0",
+              "z-index": "1000"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "toast",
+                attrs: {
+                  role: "alert",
+                  "aria-live": "assertive",
+                  "aria-atomic": "true"
+                }
+              },
+              [
+                _c("div", { staticClass: "toast-header" }, [
+                  _c("strong", { staticClass: "mr-auto" }, [
+                    _vm._v("Обратная связь")
+                  ]),
+                  _vm._v(" "),
+                  _c("small", { staticClass: "text-muted" }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "ml-2 mb-1 close",
+                      attrs: {
+                        type: "button",
+                        "data-dismiss": "toast",
+                        "aria-label": "Close"
+                      }
+                    },
+                    [
+                      _c("span", { attrs: { "aria-hidden": "true" } }, [
+                        _vm._v("×")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "toast-body" }, [
+                  _vm._v(
+                    "\n                    Сообщение отправлено, ждите ответа!\n                "
+                  )
+                ])
+              ]
+            )
+          ]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -47016,12 +47119,18 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row pb-3" }, [
       _c("div", { staticClass: "col" }, [
-        _c("a", { staticClass: "hunter-policy", attrs: { href: "#" } }, [
-          _vm._v("Политика конфиденциальности")
-        ]),
-        _vm._v(
-          ' 2020, ООО "РЕАЛ ТУР" ИНН 2465268090, ОГРН 1122468011291\n            '
-        )
+        _c("p", { staticStyle: { color: "#C4C4C4" } }, [
+          _c(
+            "a",
+            {
+              staticClass: "hunter-policy",
+              staticStyle: { color: "#C4C4C4" },
+              attrs: { href: "#" }
+            },
+            [_vm._v("Политика конфиденциальности")]
+          ),
+          _vm._v(' 2021, ООО "РЕАЛ ТУР" ИНН 2465268090, ОГРН 1122468011291')
+        ])
       ])
     ])
   }
@@ -47175,6 +47284,7 @@ var render = function() {
   return _c(
     "div",
     {
+      ref: "modal",
       staticClass: "modal fade",
       attrs: {
         id: "fbModal",
@@ -47335,11 +47445,7 @@ var render = function() {
               "button",
               {
                 staticClass: "btn hunter-btn-orange",
-                attrs: {
-                  type: "button",
-                  "data-toggle": "modal",
-                  "data-target": "#fbModal"
-                },
+                attrs: { type: "button" },
                 on: {
                   click: function($event) {
                     return _vm.sendMail()
@@ -47426,6 +47532,7 @@ var render = function() {
   return _c(
     "div",
     {
+      ref: "modal",
       staticClass: "modal fade",
       attrs: {
         id: "permModal",
@@ -47469,20 +47576,51 @@ var render = function() {
                       { staticClass: "form-check form-check-inline col" },
                       [
                         _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.season,
+                              expression: "season"
+                            }
+                          ],
                           staticClass: "form-check-input",
-                          attrs: {
-                            "data-season":
-                              item.date_from + " - " + item.date_to,
-                            type: "checkbox",
-                            id: "season" + index
-                          },
+                          attrs: { type: "checkbox", id: "season" + index },
                           domProps: {
-                            checked: item.id == _vm.season.id ? true : false
+                            value: item.date_from + " - " + item.date_to,
+                            checked: Array.isArray(_vm.season)
+                              ? _vm._i(
+                                  _vm.season,
+                                  item.date_from + " - " + item.date_to
+                                ) > -1
+                              : _vm.season
                           },
                           on: {
-                            change: function($event) {
-                              return _vm.setSeason($event, item.id)
-                            }
+                            change: [
+                              function($event) {
+                                var $$a = _vm.season,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v =
+                                      item.date_from + " - " + item.date_to,
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 && (_vm.season = $$a.concat([$$v]))
+                                  } else {
+                                    $$i > -1 &&
+                                      (_vm.season = $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1)))
+                                  }
+                                } else {
+                                  _vm.season = $$c
+                                }
+                              },
+                              function($event) {
+                                return _vm.setSeason($event, item.id)
+                              }
+                            ]
                           }
                         }),
                         _vm._v(" "),
@@ -47654,11 +47792,7 @@ var render = function() {
               "button",
               {
                 staticClass: "btn hunter-btn-orange",
-                attrs: {
-                  type: "button",
-                  "data-toggle": "modal",
-                  "data-target": "#permModal"
-                },
+                attrs: { type: "button" },
                 on: { click: _vm.sendMail }
               },
               [_vm._v("Отправить заявку")]
@@ -47770,7 +47904,10 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "div",
-                  { staticClass: "d-flex form-group col-sm-12 col-lg-6" },
+                  {
+                    staticClass: "d-flex form-group col-sm-12 col-lg-6",
+                    staticStyle: { padding: "0 10px 0 0" }
+                  },
                   [
                     _c("span", [
                       _vm._v(_vm._s(_vm.tour.number_of_hunters_min))
@@ -47830,7 +47967,10 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "div",
-                  { staticClass: "d-flex form-group col-sm-12 col-lg-6" },
+                  {
+                    staticClass: "d-flex form-group col-sm-12 col-lg-6",
+                    staticStyle: { padding: "0 10px 0 0" }
+                  },
                   [
                     _c("span", [_vm._v(_vm._s(_vm.tour.number_of_guests_min))]),
                     _vm._v(" "),

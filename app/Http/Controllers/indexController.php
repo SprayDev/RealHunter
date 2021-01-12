@@ -25,6 +25,8 @@ class indexController extends Controller
     public function permission($id)
     {
         $perm = licensies::whereId($id)->with('location')->with('seasons')->first();
+        if (!$perm)
+            abort(403);
         foreach ($perm->seasons as $k=>$season)
         {
             $season->date_from = date('d.m.Y', strtotime($season->date_from));
@@ -47,6 +49,8 @@ class indexController extends Controller
     public function tour($slug)
     {
         $tour = Tour::whereId($slug)->with('facilities')->with('prices')->with('location')->first();
+        if (!$tour)
+            abort(403);
         $tour->pics = $tour->images();
         $origin = date_create($tour->available_period_min);
         $target = date_create($tour->available_period_max);

@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade" id="fbModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="fbModal" tabindex="-1" aria-labelledby="exampleModalLabel" ref="modal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -40,7 +40,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn hunter-btn-orange" @click="sendMail()" data-toggle="modal" data-target="#fbModal">Отправить заявку</button>
+                    <button type="button" class="btn hunter-btn-orange" @click="sendMail()">Отправить заявку</button>
                 </div>
             </div>
         </div>
@@ -72,25 +72,32 @@ export default {
             var formElement = this.$refs.form;
             let data = new FormData(formElement)
             let vm = this;
-            console.log(data)
-            axios.post('/api/sendMail', data, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            }).catch((error) => {
-                let errors = error.response.data.errors
-                if (errors)
-                {
-                    for (let index in errors)
-                    {
-                        let input_validate = formElement.querySelector(`input[name="${index}"]`).closest('div').querySelector('div[class="invalid-feedback"]')
-                        input_validate.style.display = 'block';
-                        vm.validateForm[index] = errors[index][0]
+            axios
+                .post('/api/sendMail', data, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
                     }
-                }
-            }).then((response) => {
-                $(this.$refs.modal).modal()
-            })
+                })
+                .then((response) => {
+                    $('.toast').toast('show');
+                    $(this.$refs.modal).modal('hide')
+
+                })
+                .catch((error) => {
+                    if (error.response.status == 422 )
+                    {
+                        let errors = error.response.data.errors
+                        if (errors)
+                        {
+                            for (let index in errors)
+                            {
+                                let input_validate = formElement.querySelector(`input[name="${index}"]`).closest('div').querySelector('div[class="invalid-feedback"]')
+                                input_validate.style.display = 'block';
+                                vm.validateForm[index] = errors[index][0]
+                            }
+                        }
+                    }
+                })
         }
     }
 }

@@ -11,15 +11,15 @@
                 <h5 class="font-weight-bolder">Бронирование</h5>
                 <div class="card card-tour mb-3 border-0" style="background: #F5F5F5;">
                     <div class="card-body">
-                        <p class="card-text font-weight-bold">{{ tour.location.title }} </p>
-                        <p class="card-text font-weight-bold">{{ days }}</p>
-                        <p class="card-text font-weight-bold"><span class="" title="Гость — это сопровождающий без права охоты">Охотников</span> {{tour.number_of_hunters_min}}-{{tour.number_of_hunters_max}}</p>
-                        <p class="card-text font-weight-bold"><span class="" title="Гость — это сопровождающий без права охоты">Гостей</span> {{tour.number_of_guests_min}}-{{tour.number_of_guests_max}}</p>
+                        <p class="card-text ">{{ tour.location.title }} </p>
+                        <p class="card-text ">{{ days }}</p>
+                        <p class="card-text "><span class="" title="Гость — это сопровождающий без права охоты">Охотников</span> {{tour.number_of_hunters_min}}-{{tour.number_of_hunters_max}}</p>
+                        <p class="card-text "><span class="" title="Гость — это сопровождающий без права охоты">Гостей</span> {{tour.number_of_guests_min}}-{{tour.number_of_guests_max}}</p>
                     </div>
                 </div>
                 <div class="row pb-2">
                     <div class="col-8 card-tour d-flex align-items-center">
-                        <p class="card-text font-weight-bold">Количество <span class="">охотников</span></p>
+                        <p class="card-text ">Количество <span class="">охотников</span></p>
                     </div>
                     <div class="col-4">
                         <div class="input-group">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="row pb-2">
                     <div class="col-8 card-tour d-flex align-items-center">
-                        <p class="card-text font-weight-bold">Количество <span class="">гостей</span></p>
+                        <p class="card-text ">Количество <span class="">гостей</span></p>
                     </div>
                     <div class="col-4">
                         <div class="input-group">
@@ -89,15 +89,15 @@
                 <h5 class="font-weight-bolder">Бронирование</h5>
                 <div class="card card-tour mb-3 border-0" style="background: #F5F5F5;">
                     <div class="card-body">
-                        <p class="card-text font-weight-bold">{{ tour.location.title }} </p>
-                        <p class="card-text font-weight-bold">{{ days }}</p>
-                        <p class="card-text font-weight-bold"><span class="">Охотников</span> {{tour.number_of_hunters_min}}-{{tour.number_of_hunters_max}}</p>
-                        <p class="card-text font-weight-bold"><span class="">Гостей</span> {{tour.number_of_guests_min}}-{{tour.number_of_guests_max}}</p>
+                        <p class="card-text ">{{ tour.location.title }} </p>
+                        <p class="card-text ">{{ days }}</p>
+                        <p class="card-text "><span class="">Охотников</span> {{tour.number_of_hunters_min}}-{{tour.number_of_hunters_max}}</p>
+                        <p class="card-text "><span class="">Гостей</span> {{tour.number_of_guests_min}}-{{tour.number_of_guests_max}}</p>
                     </div>
                 </div>
                 <div class="row pb-2">
                     <div class="col-8 card-tour d-flex align-items-center">
-                        <p class="card-text font-weight-bold">Количество <span class="">охотников</span></p>
+                        <p class="card-text ">Количество <span class="">охотников</span></p>
                     </div>
                     <div class="col-4">
                         <div class="input-group">
@@ -119,7 +119,7 @@
                 </div>
                 <div class="row pb-2">
                     <div class="col-8 card-tour d-flex align-items-center">
-                        <p class="card-text font-weight-bold">Количество <span class="">гостей</span></p>
+                        <p class="card-text ">Количество <span class="">гостей</span></p>
                     </div>
                     <div class="col-4">
                         <div class="input-group">
@@ -160,6 +160,25 @@
                     </div>
                     <div class="">
                         <h5 class="hunter-text-orange">от {{ item.PriceFull }} руб</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div aria-live="polite" aria-atomic="true" style="position: absolute; top: 15px; right: 15px;min-height: 0px;width: 25%; ">
+            <!-- Position it -->
+            <div style="position: absolute; top: 0; right: 0;z-index: 1000">
+
+                <!-- Then put toasts within -->
+                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <strong class="mr-auto">Обратная связь</strong>
+                        <small class="text-muted"></small>
+                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="toast-body">
+                        Сообщение отправлено, ждите ответа!
                     </div>
                 </div>
             </div>
