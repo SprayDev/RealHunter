@@ -2,26 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d9e9966-933a-47cf-9dcf-c8d25715409a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/RealHunt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RealHunt.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/apiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/apiController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/indexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/indexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/SendMailRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/SendMailRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mail/feedBack.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/feedBack.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/blog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/blog.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/licensies.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/licensies.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/location.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/location.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_03_144124_add_frn_key_blog.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_03_144124_add_frn_key_blog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_04_164306_create_licensies_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_04_164306_create_licensies_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/blog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/blog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/licenses.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/licenses.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/post.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/post.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/pages/tour.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/tour.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/partials/footer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partials/footer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/partials/hunter-fb-modal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partials/hunter-fb-modal.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/partials/header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partials/header.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/partials/hunter-perm-modal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partials/hunter-perm-modal.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/partials/hunter-tour-modal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partials/hunter-tour-modal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mails/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mails/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/custom.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/custom.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/blog.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/company.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/company.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/contacts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/contacts.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/permission.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/permission.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/head.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/permissions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/permissions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/tours.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/tours.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,11 +249,41 @@
       <workItem from="1610429053045" duration="7624000" />
       <workItem from="1610443559270" duration="51000" />
       <workItem from="1610456452566" duration="8769000" />
+      <workItem from="1610508171696" duration="396000" />
+      <workItem from="1610512893638" duration="2383000" />
+      <workItem from="1610529442546" duration="118000" />
+      <workItem from="1610529866014" duration="231000" />
+      <workItem from="1610556203679" duration="4960000" />
+      <workItem from="1610603765842" duration="427000" />
+      <workItem from="1610629095782" duration="8239000" />
+      <workItem from="1610677970814" duration="2159000" />
+      <workItem from="1610724483117" duration="7000" />
+      <workItem from="1610949728695" duration="383000" />
+      <workItem from="1611039807595" duration="381000" />
+      <workItem from="1611040399904" duration="807000" />
+      <workItem from="1611042450508" duration="2075000" />
+      <workItem from="1611048749682" duration="446000" />
+      <workItem from="1611051202128" duration="4072000" />
+      <workItem from="1611119030876" duration="100000" />
+      <workItem from="1611119215551" duration="419000" />
+      <workItem from="1611121997346" duration="3512000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

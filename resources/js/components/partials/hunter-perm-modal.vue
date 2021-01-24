@@ -102,21 +102,23 @@ export default {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
-            }).catch((error) => {
-                let errors = error.response.data.errors
-                if (errors)
-                {
-                    for (let index in errors)
-                    {
-                        let input_validate = formElement.querySelector(`input[name="${index}"]`).closest('div').querySelector('div[class="invalid-feedback"]')
-                        input_validate.style.display = 'block';
-                        vm.validateForm[index] = errors[index][0]
-                    }
-                }
-            }).then((response) => {
-                $('.toast').toast('show');
-                $(this.$refs.modal).modal('hide');
             })
+                .then((response) => {
+                        $('.toast').toast('show');
+                        $(this.$refs.modal).modal('hide');
+                })
+                .catch((error) => {
+                    let errors = error.response.data.errors
+                    if (errors)
+                    {
+                        for (let index in errors)
+                        {
+                            let input_validate = formElement.querySelector(`input[name="${index}"]`).closest('div').querySelector('div[class="invalid-feedback"]')
+                            input_validate.style.display = 'block';
+                            vm.validateForm[index] = errors[index][0]
+                        }
+                    }
+                })
         }
     }
 }

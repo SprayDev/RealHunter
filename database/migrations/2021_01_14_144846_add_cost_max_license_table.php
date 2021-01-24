@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFrnKeyBlog extends Migration
+class AddCostMaxLicenseTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddFrnKeyBlog extends Migration
      */
     public function up()
     {
-        Schema::table('blogs', function (Blueprint $table) {
-            $table->unsignedBigInteger('picture_id');
-            $table->foreign('picture_id')->references('id')->on('pictures');
+        Schema::table('licenses', function (Blueprint $table) {
+            $table->integer('cost_max');
         });
     }
 
@@ -26,8 +25,8 @@ class AddFrnKeyBlog extends Migration
      */
     public function down()
     {
-        Schema::table('blogs', function (Blueprint $table) {
-            $table->dropForeign(['picture_id']);
+        Schema::table('licenses', function (Blueprint $table) {
+            $table->dropColumn('cost_max');
         });
     }
 }

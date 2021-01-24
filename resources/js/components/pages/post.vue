@@ -3,11 +3,15 @@
         <h1 class="hunter-perm-title h1 pb-3">
             {{blog.title}}
         </h1>
+        <div class="d-flex pb-2 hunter-post-detail">
+            <span>{{blog.date}}</span>
+            <span><img src="/storage/images/views.png"> {{blog.views_number}}</span>
+        </div>
         <div class="row">
             <div class="col-lg-8 col-md-7 col-sm-6">
-                <img src="/images/bear_big.png">
-                <div>
-                    {{blog.content}}
+                <img :src="blog.picture.image_path" class="img-fluid">
+                <div v-html="blog.content" class="py-5">
+
                 </div>
             </div>
             <div class="col-lg-4 col-md-5 col-sm-6">
@@ -44,7 +48,7 @@ export default {
         }
     },
     mounted() {
-
+        console.log(this.blog)
     },
     methods: {
         onCounter(e) {

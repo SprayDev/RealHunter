@@ -8176,26 +8176,52 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "licenses",
-  props: ['perms'],
+  props: ['perms', 'locations'],
   data: function data() {
-    return {};
+    return {
+      selected: null,
+      filteredPerms: this.perms,
+      seasonDate: null
+    };
   },
   mounted: function mounted() {},
   computed: {
+    selected_perms: function selected_perms() {
+      var perms = this.filteredPerms;
+      return perms;
+    },
     first_three: function first_three() {
-      var licenses = this.perms;
+      var licenses = this.selected_perms;
       return licenses.slice(0, 3);
     },
     rest: function rest() {
-      var licenses = this.perms;
+      var licenses = this.selected_perms;
       return licenses.slice(3, licenses.length);
     }
   },
   methods: {
     go_to: function go_to(id) {
       window.location.href = "permissions/".concat(id);
+    },
+    filterPerms: function filterPerms(location, date) {
+      var _this = this;
+
+      axios.post('/api/licenses/filter', {
+        location_id: location,
+        season_date: date
+      }).then(function (response) {
+        var data = response.data;
+        _this.filteredPerms = data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   }
 });
@@ -8246,6 +8272,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "post",
   props: ['blog'],
@@ -8255,7 +8285,9 @@ __webpack_require__.r(__webpack_exports__);
       guestsCount: 0
     };
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    console.log(this.blog);
+  },
   methods: {
     onCounter: function onCounter(e) {
       var target = e.currentTarget;
@@ -8883,6 +8915,9 @@ __webpack_require__.r(__webpack_exports__);
         headers: {
           'Content-Type': 'multipart/form-data'
         }
+      }).then(function (response) {
+        $('.toast').toast('show');
+        $(_this.$refs.modal).modal('hide');
       })["catch"](function (error) {
         var errors = error.response.data.errors;
 
@@ -8893,9 +8928,6 @@ __webpack_require__.r(__webpack_exports__);
             vm.validateForm[index] = errors[index][0];
           }
         }
-      }).then(function (response) {
-        $('.toast').toast('show');
-        $(_this.$refs.modal).modal('hide');
       });
     }
   }
@@ -8912,6 +8944,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -9035,6 +9068,9 @@ __webpack_require__.r(__webpack_exports__);
         headers: {
           'Content-Type': 'multipart/form-data'
         }
+      }).then(function (response) {
+        $('.toast').toast('show');
+        $(_this.$refs.modal).modal('hide');
       })["catch"](function (error) {
         var errors = error.response.data.errors;
 
@@ -9045,9 +9081,6 @@ __webpack_require__.r(__webpack_exports__);
             vm.validateForm[index] = errors[index][0];
           }
         }
-      }).then(function (response) {
-        $('.toast').toast('show');
-        $(_this.$refs.modal).modal('hide');
       });
     }
   },
@@ -45815,16 +45848,22 @@ var render = function() {
             }
           },
           [
-            _vm._m(0, true),
+            _c("div", [
+              _c("img", {
+                staticClass: "card-img-top",
+                attrs: { src: blog.picture.image_path, alt: "..." }
+              })
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body hunter-card-body" }, [
               _c("h5", { staticClass: "card-title hunter-card-title" }, [
                 _vm._v(_vm._s(blog.short_title))
               ]),
               _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v(_vm._s(blog.short_content))
-              ])
+              _c("p", {
+                staticClass: "card-text",
+                domProps: { innerHTML: _vm._s(blog.short_content) }
+              })
             ])
           ]
         )
@@ -45866,22 +45905,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("img", {
-        staticClass: "card-img-top",
-        attrs: {
-          src: "https://avto-russia.ru/moto/jawa/photo/jawa_350_lux_1.jpg",
-          alt: "..."
-        }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -45903,87 +45927,116 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container pt-5 py-5" }, [
-    _c("h1", { staticClass: "h1 pb-3" }, [
-      _vm._v("\n        Список разрешений\n    ")
-    ]),
-    _vm._v(" "),
-    _c("p", [
-      _vm._v(
-        "\n        Разрешение. Любой вид охоты может осуществляться только после получения разрешения на добычу охотничьих ресурсов, допускающего отлов или отстрел одной или нескольких особей диких животных\n    "
-      )
-    ]),
-    _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "row mt-3" },
-      _vm._l(_vm.first_three, function(item, index) {
-        return _c(
-          "div",
-          {
-            key: item.id,
-            staticClass: "col-md-4 py-3",
+  return _c(
+    "div",
+    { staticClass: "container pt-5 py-5" },
+    [
+      _c("h1", { staticClass: "h1 pb-3" }, [
+        _vm._v("\n        Список разрешений\n    ")
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "\n        Нет свободного времени для получения лицензии на охоту - мы всегда готовы Вам помочь!\n    "
+        )
+      ]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "form-group col-md-4 mb-3" }, [
+          _c("label", { attrs: { for: "region" } }, [_vm._v("Регион охоты")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selected,
+                  expression: "selected"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { id: "region" },
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.selected = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                  function($event) {
+                    return _vm.filterPerms(_vm.selected, _vm.seasonDate)
+                  }
+                ]
+              }
+            },
+            [
+              _c("option", { attrs: { value: "null" } }, [
+                _vm._v("Выберите регион")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.locations, function(location) {
+                return _c(
+                  "option",
+                  { key: location.id, domProps: { value: location.id } },
+                  [_vm._v(_vm._s(location.title))]
+                )
+              })
+            ],
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-4" }, [
+          _c("label", { attrs: { for: "season" } }, [_vm._v("Сезон охоты")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.seasonDate,
+                expression: "seasonDate"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "date", id: "season" },
+            domProps: { value: _vm.seasonDate },
             on: {
-              click: function($event) {
-                return _vm.go_to(item.id)
+              change: function($event) {
+                return _vm.filterPerms(_vm.selected, _vm.seasonDate)
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.seasonDate = $event.target.value
               }
             }
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "position-relative cursor-pointer hunter-perm-lg-item"
-              },
-              [
-                _c("img", {
-                  staticClass: "card-img-top",
-                  attrs: { src: item.picture.image_path, alt: "..." }
-                }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticStyle: {
-                      position: "absolute",
-                      bottom: "0",
-                      height: "56px",
-                      background: "rgba(0, 0, 0, 0.5)",
-                      width: "100%"
-                    }
-                  },
-                  [
-                    _c(
-                      "h3",
-                      {
-                        staticClass: "text-white p-3",
-                        staticStyle: { "font-size": "1.5rem" }
-                      },
-                      [_vm._v(_vm._s(item.title))]
-                    )
-                  ]
-                )
-              ]
-            )
-          ]
-        )
-      }),
-      0
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "row pt-5" },
-      [
-        _vm._l(_vm.rest, function(item, index) {
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "row mt-3" },
+        _vm._l(_vm.first_three, function(item, index) {
           return _c(
             "div",
             {
               key: item.id,
-              staticClass: "col-lg-3 col-md-4 col-sm-6 py-3 ",
+              staticClass: "col-md-4 py-3",
               on: {
                 click: function($event) {
                   return _vm.go_to(item.id)
@@ -45993,66 +46046,125 @@ var render = function() {
             [
               _c(
                 "div",
-                { staticClass: "row hunter-perm-sm-item cursor-pointer" },
+                {
+                  staticClass:
+                    "position-relative cursor-pointer hunter-perm-lg-item"
+                },
                 [
-                  _c("div", { staticClass: "col-7 col-lg-6 col- pr-0" }, [
-                    _c("img", {
-                      staticClass: "rounded-circle",
-                      attrs: {
-                        width: "120",
-                        height: "120",
-                        src: item.picture.image_path
-                      }
-                    })
-                  ]),
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    attrs: {
+                      height: "350",
+                      src: item.picture.image_path,
+                      alt: "..."
+                    }
+                  }),
                   _vm._v(" "),
                   _c(
                     "div",
                     {
-                      staticClass:
-                        "col-5 col-lg-6 d-flex align-items-center pl-0"
+                      staticStyle: {
+                        position: "absolute",
+                        bottom: "0",
+                        height: "56px",
+                        background: "rgba(0, 0, 0, 0.5)",
+                        width: "100%"
+                      }
                     },
-                    [_c("h4", [_vm._v(_vm._s(item.title))])]
+                    [
+                      _c(
+                        "h3",
+                        {
+                          staticClass: "text-white p-3",
+                          staticStyle: { "font-size": "1.5rem" }
+                        },
+                        [_vm._v(_vm._s(item.title))]
+                      )
+                    ]
                   )
                 ]
               )
             ]
           )
         }),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-100 py-3" })
-      ],
-      2
-    )
-  ])
+        0
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "row pt-5" },
+        [
+          _vm._l(_vm.rest, function(item, index) {
+            return _c(
+              "div",
+              {
+                key: item.id,
+                staticClass: "col-lg-3 col-md-4 col-sm-6 py-3 ",
+                on: {
+                  click: function($event) {
+                    return _vm.go_to(item.id)
+                  }
+                }
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "row hunter-perm-sm-item cursor-pointer" },
+                  [
+                    _c("div", { staticClass: "col-5 col-lg-6 col- pr-0" }, [
+                      _c("img", {
+                        staticClass: "rounded-circle",
+                        attrs: {
+                          width: "120",
+                          height: "120",
+                          src: item.picture.image_path.replace(/.jpg/, ".png")
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "col-7 col-lg-6 d-flex align-items-center pl-0"
+                      },
+                      [_c("h4", [_vm._v(_vm._s(item.title))])]
+                    )
+                  ]
+                )
+              ]
+            )
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-100 py-3" })
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("hunter-fb-modal")
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "form-group col-md-4 mb-3" }, [
-        _c("label", { attrs: { for: "region" } }, [_vm._v("Регион охоты")]),
-        _vm._v(" "),
-        _c("select", { staticClass: "form-control", attrs: { id: "region" } }, [
-          _c("option", { attrs: { selected: "" } }, [
-            _vm._v("Выберите регион")
-          ]),
-          _vm._v(" "),
-          _c("option", [_vm._v("...")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group col-md-4" }, [
-        _c("label", { attrs: { for: "season" } }, [_vm._v("Сезон охоты")]),
-        _vm._v(" "),
-        _c("select", { staticClass: "form-control", attrs: { id: "season" } }, [
-          _c("option", { attrs: { selected: "" } }, [_vm._v("Выберите дату")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("...")])
-        ])
-      ])
+    return _c("p", [
+      _c(
+        "a",
+        {
+          staticClass: "hunter-text-orange",
+          attrs: {
+            href: "#",
+            "data-toggle": "modal",
+            "data-target": "#fbModal"
+          }
+        },
+        [_vm._v("Заполняйте заявку")]
+      ),
+      _vm._v(" и наши специалисты свяжутся с Вами в ближайшее время для.\n    ")
     ])
   }
 ]
@@ -46082,15 +46194,26 @@ var render = function() {
       _vm._v("\n        " + _vm._s(_vm.blog.title) + "\n    ")
     ]),
     _vm._v(" "),
+    _c("div", { staticClass: "d-flex pb-2 hunter-post-detail" }, [
+      _c("span", [_vm._v(_vm._s(_vm.blog.date))]),
+      _vm._v(" "),
+      _c("span", [
+        _c("img", { attrs: { src: "/storage/images/views.png" } }),
+        _vm._v(" " + _vm._s(_vm.blog.views_number))
+      ])
+    ]),
+    _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-lg-8 col-md-7 col-sm-6" }, [
-        _c("img", { attrs: { src: "/images/bear_big.png" } }),
+        _c("img", {
+          staticClass: "img-fluid",
+          attrs: { src: _vm.blog.picture.image_path }
+        }),
         _vm._v(" "),
-        _c("div", [
-          _vm._v(
-            "\n                " + _vm._s(_vm.blog.content) + "\n            "
-          )
-        ])
+        _c("div", {
+          staticClass: "py-5",
+          domProps: { innerHTML: _vm._s(_vm.blog.content) }
+        })
       ]),
       _vm._v(" "),
       _vm._m(0)
@@ -46211,7 +46334,8 @@ var render = function() {
                     "span",
                     {
                       attrs: {
-                        title: "Гость — это сопровождающий без права охоты"
+                        title:
+                          "Охотник — это человек, имеющий разрешение на охоту"
                       }
                     },
                     [_vm._v("Охотников")]
@@ -46528,25 +46652,43 @@ var render = function() {
                   _vm._v(_vm._s(_vm.days))
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "card-text " }, [
-                  _c("span", {}, [_vm._v("Охотников")]),
-                  _vm._v(
-                    " " +
-                      _vm._s(_vm.tour.number_of_hunters_min) +
-                      "-" +
-                      _vm._s(_vm.tour.number_of_hunters_max)
-                  )
-                ]),
+                _c(
+                  "p",
+                  {
+                    staticClass: "card-text ",
+                    attrs: {
+                      title: "Охотник — человек, имеющий разрешение на охоту"
+                    }
+                  },
+                  [
+                    _c("span", {}, [_vm._v("Охотников")]),
+                    _vm._v(
+                      " " +
+                        _vm._s(_vm.tour.number_of_hunters_min) +
+                        "-" +
+                        _vm._s(_vm.tour.number_of_hunters_max)
+                    )
+                  ]
+                ),
                 _vm._v(" "),
-                _c("p", { staticClass: "card-text " }, [
-                  _c("span", {}, [_vm._v("Гостей")]),
-                  _vm._v(
-                    " " +
-                      _vm._s(_vm.tour.number_of_guests_min) +
-                      "-" +
-                      _vm._s(_vm.tour.number_of_guests_max)
-                  )
-                ])
+                _c(
+                  "p",
+                  {
+                    staticClass: "card-text ",
+                    attrs: {
+                      title: "Гость — это сопровождающий без права охоты"
+                    }
+                  },
+                  [
+                    _c("span", {}, [_vm._v("Гостей")]),
+                    _vm._v(
+                      " " +
+                        _vm._s(_vm.tour.number_of_guests_min) +
+                        "-" +
+                        _vm._s(_vm.tour.number_of_guests_max)
+                    )
+                  ]
+                )
               ])
             ]
           ),
@@ -46771,10 +46913,11 @@ var render = function() {
           { staticClass: "card-deck" },
           _vm._l(_vm.tours, function(item, index) {
             return _c(
-              "div",
+              "a",
               {
                 key: item.id,
-                staticClass: "card border-0 col-lg-4 col-md-4 col-sm-6 col-12"
+                staticClass: "card border-0 col-lg-4 col-md-4 col-sm-6 col-12",
+                attrs: { href: "/tours/" + item.id }
               },
               [
                 _vm._m(5, true),
@@ -46833,10 +46976,14 @@ var staticRenderFns = [
       "div",
       { staticClass: "col-8 card-tour d-flex align-items-center" },
       [
-        _c("p", { staticClass: "card-text " }, [
-          _vm._v("Количество "),
-          _c("span", {}, [_vm._v("охотников")])
-        ])
+        _c(
+          "p",
+          {
+            staticClass: "card-text ",
+            attrs: { title: "Охотник — человек, имеющий разрешение на охоту" }
+          },
+          [_vm._v("Количество "), _c("span", {}, [_vm._v("охотников")])]
+        )
       ]
     )
   },
@@ -46848,10 +46995,14 @@ var staticRenderFns = [
       "div",
       { staticClass: "col-8 card-tour d-flex align-items-center" },
       [
-        _c("p", { staticClass: "card-text " }, [
-          _vm._v("Количество "),
-          _c("span", {}, [_vm._v("гостей")])
-        ])
+        _c(
+          "p",
+          {
+            staticClass: "card-text ",
+            attrs: { title: "Гость — это сопровождающий без права охоты" }
+          },
+          [_vm._v("Количество "), _c("span", {}, [_vm._v("гостей")])]
+        )
       ]
     )
   },
@@ -46863,10 +47014,14 @@ var staticRenderFns = [
       "div",
       { staticClass: "col-8 card-tour d-flex align-items-center" },
       [
-        _c("p", { staticClass: "card-text " }, [
-          _vm._v("Количество "),
-          _c("span", {}, [_vm._v("охотников")])
-        ])
+        _c(
+          "p",
+          {
+            staticClass: "card-text ",
+            attrs: { title: "Охотник — человек, имеющий разрешение на охоту" }
+          },
+          [_vm._v("Количество "), _c("span", {}, [_vm._v("охотников")])]
+        )
       ]
     )
   },
@@ -46878,10 +47033,14 @@ var staticRenderFns = [
       "div",
       { staticClass: "col-8 card-tour d-flex align-items-center" },
       [
-        _c("p", { staticClass: "card-text " }, [
-          _vm._v("Количество "),
-          _c("span", {}, [_vm._v("гостей")])
-        ])
+        _c(
+          "p",
+          {
+            staticClass: "card-text ",
+            attrs: { title: "Гость — это сопровождающий без права охоты" }
+          },
+          [_vm._v("Количество "), _c("span", {}, [_vm._v("гостей")])]
+        )
       ]
     )
   },
@@ -46926,7 +47085,7 @@ var staticRenderFns = [
       {
         staticStyle: {
           position: "absolute",
-          top: "15px",
+          top: "50px",
           right: "15px",
           "min-height": "0px",
           width: "25%"
@@ -47107,9 +47266,9 @@ var staticRenderFns = [
         "a",
         {
           staticClass: "nav-link hunter-text-orange font-weight-bold",
-          attrs: { href: "tel:+79835083158" }
+          attrs: { href: "tel:+73912083158" }
         },
-        [_vm._v("+7 983 508 31 58")]
+        [_vm._v("+7(391)208-31-58")]
       )
     ])
   },
@@ -47181,9 +47340,9 @@ var render = function() {
                   class:
                     "nav-link " +
                     (_vm.screenWidth < 991 ? "btn hunter-btn-orange" : ""),
-                  attrs: { href: "tel:+79835083158" }
+                  attrs: { href: "tel:+73912083158" }
                 },
-                [_vm._v("+7 983 508 31 58")]
+                [_vm._v("+7(391)208-31-58")]
               )
             ])
           ]
@@ -47211,6 +47370,7 @@ var staticRenderFns = [
       "button",
       {
         staticClass: "navbar-toggler",
+        staticStyle: { "z-index": "1000" },
         attrs: {
           type: "button",
           "data-toggle": "collapse",
@@ -47893,7 +48053,8 @@ var render = function() {
                       {
                         staticStyle: { "text-decoration-line": "underline" },
                         attrs: {
-                          title: "Гость — это сопровождающий без права охоты"
+                          title:
+                            "Охотник — человек, имеющий разрешение на охоту"
                         }
                       },
                       [_vm._v("Охотников")]
@@ -47906,7 +48067,7 @@ var render = function() {
                   "div",
                   {
                     staticClass: "d-flex form-group col-sm-12 col-lg-6",
-                    staticStyle: { padding: "0 10px 0 0" }
+                    staticStyle: { padding: "0 15px 0 15px" }
                   },
                   [
                     _c("span", [
@@ -47969,7 +48130,7 @@ var render = function() {
                   "div",
                   {
                     staticClass: "d-flex form-group col-sm-12 col-lg-6",
-                    staticStyle: { padding: "0 10px 0 0" }
+                    staticStyle: { padding: "0 15px 0 15px" }
                   },
                   [
                     _c("span", [_vm._v(_vm._s(_vm.tour.number_of_guests_min))]),

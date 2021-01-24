@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\blog;
 use App\Models\licensies;
+use App\Models\location;
 use App\Models\Tour;
 use App\Models\TourPictures;
 use Illuminate\Http\Request;
@@ -12,14 +13,18 @@ class indexController extends Controller
 {
     public function index()
     {
-        return view('pages.index');
+        $tours = Tour::limit(3)->orderby('created_at')->get();
+        return view('pages.index')->withTours($tours);
     }
 
     public function permissions()
     {
         $perms = licensies::with('picture')->get();
-
-        return view('pages.permissions')->withPerms($perms);
+        $locations = location::all();
+        return view('pages.permissions')->with([
+            'perms' => $perms,
+            'locations' => $locations,
+        ]);
     }
 
     public function permission($id)
@@ -33,7 +38,6 @@ class indexController extends Controller
             $season->date_to = date('d.m.Y', strtotime($season->date_to));
             $perm->seasons[$k] = $season;
         }
-
         $tours = Tour::with('location')->orderBy('available_period_min')->limit(4)->get();
 
         return view('pages.permission')->withPerm($perm)->withTours($tours);
@@ -79,7 +83,7 @@ class indexController extends Controller
 
     public function blog()
     {
-        $blogs = blog::paginate(6);
+        $blogs = blog::with('picture')->paginate(6);
 
 
         return view('pages.blog')->withBlogs($blogs);
@@ -87,7 +91,10 @@ class indexController extends Controller
 
     public function post($slug)
     {
-        $blog = blog::find($slug);
+        $blog = blog::with('picture')->whereId($slug)->first();
+        $blog->views_number++;
+        $blog->save();
+        $blog->date = date('d.m.Y', $blog->created_at->timestamp);
         return view('pages.post')->withBlog($blog);
     }
 }

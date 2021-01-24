@@ -21,7 +21,7 @@
                     <a class="nav-link px-0" href="/permissions">Разрешения</a>
                 </div>
                 <div class="hunter-phone">
-                    <a class="nav-link hunter-text-orange font-weight-bold" href="tel:+79835083158">+7 983 508 31 58</a>
+                    <a class="nav-link hunter-text-orange font-weight-bold" href="tel:+73912083158">+7(391)208-31-58</a>
                 </div>
             </div>
             <div class="row pb-3">

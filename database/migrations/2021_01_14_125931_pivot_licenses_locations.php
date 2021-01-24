@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFrnKeyBlog extends Migration
+class PivotLicensesLocations extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AddFrnKeyBlog extends Migration
      */
     public function up()
     {
-        Schema::table('blogs', function (Blueprint $table) {
-            $table->unsignedBigInteger('picture_id');
-            $table->foreign('picture_id')->references('id')->on('pictures');
+        Schema::create('license_location', function (Blueprint $table){
+            $table->foreignId('location_id')->constrained();
+            $table->foreignId('license_id')->constrained();
+            $table->date('season_start');
+            $table->date('season_end');
         });
     }
 
@@ -26,8 +28,6 @@ class AddFrnKeyBlog extends Migration
      */
     public function down()
     {
-        Schema::table('blogs', function (Blueprint $table) {
-            $table->dropForeign(['picture_id']);
-        });
+        Schema::dropIfExists('license_location');
     }
 }

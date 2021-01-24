@@ -13,6 +13,16 @@ h1{
 p{
     font-size: 1rem !important;
 }
+a{
+    color: inherit;
+}
+a:hover{
+    &.card {
+        text-decoration-line: none;
+    }
+    color: inherit;
+    cursor: pointer;
+}
 body{
     background: #ffffff;
 }
@@ -209,6 +219,20 @@ a.hunter-text-orange{
 .cursor-pointer{
     cursor: pointer;
 }
+.hunter-perm-lg-item{
+    overflow:hidden;
+    width:350px;
+    height:350px;
+    & img {
+        position: absolute;
+        width:350px;
+        height:350px;
+        object-fit:cover;
+    }
+}
+.hunter-post-detail{
+    column-gap: 30px;
+}
 .hunter-perm-lg-item:hover h3{
     color: $hunter_orange !important;
 }
@@ -222,6 +246,7 @@ a.hunter-text-orange{
 }
 .hunter-perm-title span {
     color: $hunter_green;
+    font-size: 1.125rem;
 }
 .hunter-text-green{
     color: $hunter_green;

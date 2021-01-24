@@ -13,7 +13,7 @@ class CreateLicensiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('licensies', function (Blueprint $table) {
+        Schema::create('licenses', function (Blueprint $table) {
             $table->id();
             $table->string('map_frame');
             $table->integer('cost');

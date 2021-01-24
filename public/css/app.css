@@ -9989,6 +9989,19 @@ p {
   font-size: 1rem !important;
 }
 
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+  cursor: pointer;
+}
+a:hover.card {
+  -webkit-text-decoration-line: none;
+          text-decoration-line: none;
+}
+
 body {
   background: #ffffff;
 }
@@ -10175,6 +10188,24 @@ a.hunter-text-orange {
   cursor: pointer;
 }
 
+.hunter-perm-lg-item {
+  overflow: hidden;
+  width: 350px;
+  height: 350px;
+}
+.hunter-perm-lg-item img {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.hunter-post-detail {
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+}
+
 .hunter-perm-lg-item:hover h3 {
   color: #BC702A !important;
 }
@@ -10189,6 +10220,7 @@ a.hunter-text-orange {
 
 .hunter-perm-title span {
   color: #267317;
+  font-size: 1.125rem;
 }
 
 .hunter-text-green {

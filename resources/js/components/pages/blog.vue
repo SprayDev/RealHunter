@@ -3,11 +3,11 @@
         <div class="row">
             <div class="card border-0 col-lg-4 col-md-4 col-sm-6 hunter-blog-card" @click="open(blog.id)" v-for="(blog, index) in blogs.data" :key="blog.id">
                 <div>
-                    <img src="https://avto-russia.ru/moto/jawa/photo/jawa_350_lux_1.jpg" class="card-img-top" alt="...">
+                    <img :src="blog.picture.image_path" class="card-img-top" alt="...">
                 </div>
                 <div class="card-body hunter-card-body">
                     <h5 class="card-title hunter-card-title">{{blog.short_title}}</h5>
-                    <p class="card-text">{{blog.short_content}}</p>
+                    <p class="card-text" v-html="blog.short_content"></p>
                 </div>
             </div>
         </div>

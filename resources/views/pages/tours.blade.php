@@ -1,20 +1,23 @@
 @extends('layouts.default')
 
 @section('page')
-    <div class="container pt-5 py-5">
+    <div class="container pt-5 py-5" style="min-height: 100vh">
         <h1 class="h1 pb-3">
             Туры охотные. Крутые
         </h1>
         <p class="text-justify">
-            Текст о предложении тура и что это такое. Туры совершенно разные и совершенно крутые. Наши туры самые адреналинистые. Вот почему. Дальше следует некоторое описание туров и их преимуществ, краткое.
+            Если Вас заинтересовал какой-то из представленных охотничьих туров, присылайте свои заявки на наш электронный адрес, указав свои координаты - ФИО, телефон. Наши организаторы свяжутся с Вами и расскажут более подробно о интересующем Вас туре. Или предложат что-то новое.
         </p>
         <div class="row">
             @foreach($tours as $tour)
                 <div class="card border-0 col-lg-4 col-md-4 col-sm-6 cursor-pointer mb-4" onclick="window.location.href = 'tours/{{$tour->id}}'">
                     <div class="cutCorner-2">
                         <div class="hunter-images">
-                            <img class="d-inline" src="{{asset('images/car.svg')}}">
-                            <img class="d-inline" src="{{asset('images/car.svg')}}">
+                            @foreach($tour->images() as $img)
+                                @if($img['type'] == 'extra')
+                                    <img class="d-inline" src="{{asset($img['path'])}}">
+                                @endif
+                            @endforeach
                         </div>
                         @foreach($tour->images() as $img)
                             @if($img['type'] == 'main')

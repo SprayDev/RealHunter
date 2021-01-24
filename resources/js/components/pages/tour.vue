@@ -13,13 +13,13 @@
                     <div class="card-body">
                         <p class="card-text ">{{ tour.location.title }} </p>
                         <p class="card-text ">{{ days }}</p>
-                        <p class="card-text "><span class="" title="Гость — это сопровождающий без права охоты">Охотников</span> {{tour.number_of_hunters_min}}-{{tour.number_of_hunters_max}}</p>
+                        <p class="card-text "><span class="" title="Охотник — это человек, имеющий разрешение на охоту">Охотников</span> {{tour.number_of_hunters_min}}-{{tour.number_of_hunters_max}}</p>
                         <p class="card-text "><span class="" title="Гость — это сопровождающий без права охоты">Гостей</span> {{tour.number_of_guests_min}}-{{tour.number_of_guests_max}}</p>
                     </div>
                 </div>
                 <div class="row pb-2">
                     <div class="col-8 card-tour d-flex align-items-center">
-                        <p class="card-text ">Количество <span class="">охотников</span></p>
+                        <p class="card-text " title="Охотник — человек, имеющий разрешение на охоту">Количество <span class="">охотников</span></p>
                     </div>
                     <div class="col-4">
                         <div class="input-group">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="row pb-2">
                     <div class="col-8 card-tour d-flex align-items-center">
-                        <p class="card-text ">Количество <span class="">гостей</span></p>
+                        <p class="card-text " title="Гость — это сопровождающий без права охоты">Количество <span class="">гостей</span></p>
                     </div>
                     <div class="col-4">
                         <div class="input-group">
@@ -91,13 +91,13 @@
                     <div class="card-body">
                         <p class="card-text ">{{ tour.location.title }} </p>
                         <p class="card-text ">{{ days }}</p>
-                        <p class="card-text "><span class="">Охотников</span> {{tour.number_of_hunters_min}}-{{tour.number_of_hunters_max}}</p>
-                        <p class="card-text "><span class="">Гостей</span> {{tour.number_of_guests_min}}-{{tour.number_of_guests_max}}</p>
+                        <p class="card-text " title="Охотник — человек, имеющий разрешение на охоту"><span class="">Охотников</span> {{tour.number_of_hunters_min}}-{{tour.number_of_hunters_max}}</p>
+                        <p class="card-text " title="Гость — это сопровождающий без права охоты"><span class="">Гостей</span> {{tour.number_of_guests_min}}-{{tour.number_of_guests_max}}</p>
                     </div>
                 </div>
                 <div class="row pb-2">
                     <div class="col-8 card-tour d-flex align-items-center">
-                        <p class="card-text ">Количество <span class="">охотников</span></p>
+                        <p class="card-text " title="Охотник — человек, имеющий разрешение на охоту">Количество <span class="">охотников</span></p>
                     </div>
                     <div class="col-4">
                         <div class="input-group">
@@ -119,7 +119,7 @@
                 </div>
                 <div class="row pb-2">
                     <div class="col-8 card-tour d-flex align-items-center">
-                        <p class="card-text ">Количество <span class="">гостей</span></p>
+                        <p class="card-text " title="Гость — это сопровождающий без права охоты">Количество <span class="">гостей</span></p>
                     </div>
                     <div class="col-4">
                         <div class="input-group">
@@ -145,7 +145,7 @@
         <div class="container px-0 mx-0 mt-5">
             <h1 class="hunter-tours-h2 pb-3"><span>Туры</span> ближайшие</h1>
             <div class="card-deck">
-                <div class="card border-0 col-lg-4 col-md-4 col-sm-6 col-12" v-for="(item, index) in tours" :key="item.id">
+                <a class="card border-0 col-lg-4 col-md-4 col-sm-6 col-12" v-for="(item, index) in tours" :key="item.id" :href="`/tours/${item.id}`">
                     <div class="cutCorner-2">
                         <div class="hunter-images">
                             <img class="d-inline" src="/images/car.svg">
@@ -161,10 +161,10 @@
                     <div class="">
                         <h5 class="hunter-text-orange">от {{ item.PriceFull }} руб</h5>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
-        <div aria-live="polite" aria-atomic="true" style="position: absolute; top: 15px; right: 15px;min-height: 0px;width: 25%; ">
+        <div aria-live="polite" aria-atomic="true" style="position: absolute; top: 50px; right: 15px;min-height: 0px;width: 25%; ">
             <!-- Position it -->
             <div style="position: absolute; top: 0; right: 0;z-index: 1000">
 

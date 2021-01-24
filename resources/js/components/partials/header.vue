@@ -3,7 +3,7 @@
         <!--hunter-container-header-->
         <div class="container">
             <a class="navbar-brand hunter-brand" href="/"><img src="/images/logotype.svg"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" style="z-index: 1000" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -25,7 +25,7 @@
                     </li>
                 </ul>
                 <div class="hunter-phone">
-                    <a :class="`nav-link ${screenWidth < 991 ? 'btn hunter-btn-orange' : ''}`" href="tel:+79835083158">+7 983 508 31 58</a>
+                    <a :class="`nav-link ${screenWidth < 991 ? 'btn hunter-btn-orange' : ''}`" href="tel:+73912083158">+7(391)208-31-58</a>
                 </div>
             </div>
         </div>

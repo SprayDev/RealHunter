@@ -17,6 +17,11 @@ class blog extends Model
         return Str::limit($this->title, 50);
     }
 
+    public function picture()
+    {
+        return $this->hasOne(picture::class, 'id', 'picture_id');
+    }
+
     public function getShortContentAttribute()
     {
         return Str::limit($this->content, 90);

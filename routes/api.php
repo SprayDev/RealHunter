@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('sendMail', [\App\Http\Controllers\apiController::class, 'send_mail'])->name('api.mail');
+Route::post('licenses/filter', [\App\Http\Controllers\apiController::class, 'licenses_filter'])->name('api.license.filter');

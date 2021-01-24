@@ -19,9 +19,9 @@
                         </div>
                         <div class="row pb-3">
                             <div class="form-group col-sm-12 col-lg-6">
-                                <p class="card-text">Количество <span style="text-decoration-line: underline" title="Гость — это сопровождающий без права охоты">Охотников</span>  {{huntersCount}}</p>
+                                <p class="card-text">Количество <span style="text-decoration-line: underline" title="Охотник — человек, имеющий разрешение на охоту">Охотников</span>  {{huntersCount}}</p>
                             </div>
-                            <div class="d-flex form-group col-sm-12 col-lg-6" style="padding: 0 10px 0 0;">
+                            <div class="d-flex form-group col-sm-12 col-lg-6" style="padding: 0 15px 0 15px;">
                                 <span>{{tour.number_of_hunters_min}}</span>
                                 <input name="hunters" v-model="hunters" @change="changeRange($event,'hunters')" type="range" class="custom-range" :min="tour.number_of_hunters_min" value="1" :max="tour.number_of_hunters_max" step="1">
                                 <span>{{tour.number_of_hunters_max}}</span>
@@ -31,7 +31,7 @@
                             <div class="form-group col-sm-12 col-lg-6">
                                 <p class="card-text">Количество <span style="text-decoration-line: underline" title="Гость — это сопровождающий без права охоты">Гостей</span>  {{guestsCount}}</p>
                             </div>
-                            <div class="d-flex form-group col-sm-12 col-lg-6" style="padding: 0 10px 0 0;">
+                            <div class="d-flex form-group col-sm-12 col-lg-6" style="padding: 0 15px 0 15px;">
                                 <span>{{tour.number_of_guests_min}}</span>
                                 <input type="range" name="guests" v-model="guests" class="custom-range" value="0" :min="tour.number_of_guests_min" :max="tour.number_of_guests_max" step="1">
                                 <span>{{tour.number_of_guests_max}}</span>
@@ -60,6 +60,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label>Комментарий <span class="text-muted">не обязательно</span></label>
                             <textarea class="form-control" rows="3" name="note" v-model="note"></textarea>
@@ -125,21 +126,23 @@ export default {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
-            }).catch((error) => {
-                let errors = error.response.data.errors
-                if (errors)
-                {
-                    for (let index in errors)
-                    {
-                        let input_validate = formElement.querySelector(`input[name="${index}"]`).closest('div').querySelector('div[class="invalid-feedback"]')
-                        input_validate.style.display = 'block';
-                        vm.validateForm[index] = errors[index][0]
-                    }
-                }
-            }).then((response) => {
-                $('.toast').toast('show');
-                $(this.$refs.modal).modal('hide')
             })
+                .then((response) => {
+                    $('.toast').toast('show');
+                    $(this.$refs.modal).modal('hide')
+                })
+                .catch((error) => {
+                    let errors = error.response.data.errors
+                    if (errors)
+                    {
+                        for (let index in errors)
+                        {
+                            let input_validate = formElement.querySelector(`input[name="${index}"]`).closest('div').querySelector('div[class="invalid-feedback"]')
+                            input_validate.style.display = 'block';
+                            vm.validateForm[index] = errors[index][0]
+                        }
+                    }
+                })
         }
     },
     watch:{
